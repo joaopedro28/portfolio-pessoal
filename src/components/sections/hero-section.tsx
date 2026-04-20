@@ -1,7 +1,54 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { AnimatedReveal } from "@/components/animated-reveal";
-import { heroData, siteConfig } from "@/data/portfolio";
+import { heroData, heroOrbitItems, siteConfig } from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
+
+const HERO_ORBIT_COUNT = 3;
+const HERO_ORBIT_START_ANGLES = [72, -8, -132];
+
+function normalizeOrbitIndex(value: number) {
+  return ((value % HERO_ORBIT_COUNT) + HERO_ORBIT_COUNT) % HERO_ORBIT_COUNT;
+}
+
+function buildOrbitItems() {
+  const autoCounts = Array.from({ length: HERO_ORBIT_COUNT }, () => 0);
+
+  heroOrbitItems.forEach((item, index) => {
+    if (item.angle !== undefined) {
+      return;
+    }
+
+    autoCounts[normalizeOrbitIndex(item.orbit ?? index)] += 1;
+  });
+
+  const autoIndexes = Array.from({ length: HERO_ORBIT_COUNT }, () => 0);
+
+  return heroOrbitItems.map((item, index) => {
+    const orbit = normalizeOrbitIndex(item.orbit ?? index);
+    const autoIndex = autoIndexes[orbit];
+    const autoCount = autoCounts[orbit];
+    const angle =
+      item.angle ??
+      HERO_ORBIT_START_ANGLES[orbit] +
+        (autoCount > 1 ? (360 / autoCount) * autoIndex : 0);
+
+    if (item.angle === undefined) {
+      autoIndexes[orbit] += 1;
+    }
+
+    return {
+      ...item,
+      orbit,
+      style: {
+        "--orbit-angle": `${angle}deg`,
+        "--orbit-angle-negative": `${-angle}deg`,
+      } as CSSProperties,
+    };
+  });
+}
+
+const orbitItems = buildOrbitItems();
 
 export function HeroSection() {
   return (
@@ -48,6 +95,22 @@ export function HeroSection() {
               <div className={styles.visualGlow} />
               <div className={styles.visualAxis} />
               <div className={styles.visualAxisSoft} />
+
+              <ul className={styles.visualOrbitList}>
+                {orbitItems.map((item) => (
+                  <li
+                    key={item.label}
+                    className={styles.visualOrbitItem}
+                    data-orbit={item.orbit}
+                    style={item.style}
+                  >
+                    <span className={styles.visualOrbitAnchor}>
+                      <span className={styles.visualNote}>{item.label}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
               <div className={styles.visualCore}>
                 <span className={styles.visualOverline}>Foco técnico</span>
                 <strong>Front-end sólido para operação real</strong>
@@ -55,15 +118,6 @@ export function HeroSection() {
                   Implementação clara, performance tratada cedo e uma base que
                   continua fazendo sentido depois do lançamento.
                 </span>
-              </div>
-              <div className={`${styles.visualNote} ${styles.visualNoteTop}`}>
-                React e Next.js
-              </div>
-              <div className={`${styles.visualNote} ${styles.visualNoteRight}`}>
-                Shopify e performance
-              </div>
-              <div className={`${styles.visualNote} ${styles.visualNoteBottom}`}>
-                Interfaces claras para conversão
               </div>
             </div>
           </AnimatedReveal>

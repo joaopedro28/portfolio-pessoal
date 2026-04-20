@@ -36,11 +36,17 @@ export type Project = {
   partnerSlug: string;
 };
 
+export type HeroOrbitItem = {
+  label: string;
+  orbit?: number;
+  angle?: number;
+};
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-joao-pedro.vercel.app";
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5511999999999";
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5555999536991";
 const contactEmail =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "ola@joaopedro.dev";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "joao.pedro@rockbase.com.br";
 
 const whatsappMessage =
   "Olá, João Pedro! Vim pelo seu portfólio e gostaria de conversar sobre um projeto de e-commerce.";
@@ -56,41 +62,50 @@ export const siteConfig = {
 };
 
 export const navItems: NavItem[] = [
-  { href: "/#metricas", label: "Números" },
   { href: "/#parcerias", label: "Parcerias" },
   { href: "/portfolio", label: "Portfólio" },
   { href: "/#contato", label: "Contato" },
 ];
 
 export const heroData = {
-  eyebrow: "Front-end para e-commerce em operação contínua",
+  eyebrow: "Front-end",
   lead:
     "Desenvolvo interfaces para e-commerce que precisam carregar bem, vender com clareza e continuar evoluindo sem retrabalho.",
   support:
-    "Ao longo de 8 anos, atuei com marcas, agências e squads transformando direção visual em front-end sólido, legível e pronto para produção.",
+    "Ao longo de 8 anos, atuo com marcas, agências e squads transformando direção visual em front-end sólido, legível e pronto para produção.",
   specialties: [
+    "Olist",
+    "Shopify",
+    "NuvemShop",
     "React e Next.js",
-    "Shopify e Shopify Plus",
     "Performance e Core Web Vitals",
     "Design systems e UX de conversão",
   ],
 };
+
+export const heroOrbitItems: HeroOrbitItem[] = [
+  { label: "Olist", orbit: 2, angle: 5 },
+  { label: "Shopify", orbit: 2, angle: 75 },
+  { label: "NuvemShop", orbit: 2, angle: 150 },
+  { label: "Tray", orbit: 2, angle: 225 },
+  { label: "Uappi", orbit: 2, angle: 300 },
+];
 
 export const metricItems: Metric[] = [
   {
     value: 8,
     suffix: "+",
     label: "anos de experiência em e-commerce",
-    caption: "Atuação em sustentação, redesign e evolução contínua.",
+    caption: "Atuação em Implementações, redesign e evolução contínua.",
   },
   {
-    value: 30,
+    value: 80,
     suffix: "+",
     label: "projetos entregues",
     caption: "Lojas, landing pages e frentes de otimização em produção.",
   },
   {
-    value: 5,
+    value: 8,
     suffix: "+",
     label: "agências parceiras",
     caption: "Parcerias recorrentes com times que precisam de execução confiável.",
@@ -98,8 +113,8 @@ export const metricItems: Metric[] = [
   {
     value: 10,
     suffix: "+",
-    label: "tecnologias dominadas",
-    caption: "React, Next.js, Shopify, TypeScript, CSS e performance.",
+    label: "Plataformas dominadas",
+    caption: "Olist, NuvemShop, Shopify, Wake, Tray, Uappi, Wordpress e mais.",
   },
 ];
 

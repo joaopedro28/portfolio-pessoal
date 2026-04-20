@@ -1,0 +1,33 @@
+
+> portfolio-joao-pedro@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.26.0.1:3000
+✓ Ready in 569ms
+Creating turbopack project {
+  dir: 'C:\\Users\\pitte\\Desktop\\Rockbase\\Projetos Pessoais\\Portfolio Pessoal',
+  testMode: true
+}
+
+ GET / 200 in 1200ms (next.js: 515ms, application-code: 685ms)
+ GET / 200 in 271ms (next.js: 13ms, application-code: 257ms)
+ GET / 200 in 207ms (next.js: 5ms, application-code: 202ms)
+✓ Compiled in 53ms
+ GET / 200 in 823ms (next.js: 471ms, application-code: 352ms)
+ GET / 200 in 203ms (next.js: 16ms, application-code: 188ms)
+ GET / 200 in 116ms (next.js: 5ms, application-code: 112ms)
+ GET / 200 in 118ms (next.js: 56ms, application-code: 62ms)
+ GET / 200 in 656ms (next.js: 181ms, application-code: 476ms)
+ GET / 200 in 364ms (next.js: 8ms, application-code: 356ms)
+ GET / 200 in 313ms (next.js: 8ms, application-code: 305ms)
+ GET / 200 in 322ms (next.js: 78ms, application-code: 244ms)
+ GET / 200 in 833ms (next.js: 214ms, application-code: 619ms)
+ GET / 200 in 348ms (next.js: 30ms, application-code: 318ms)
+ GET / 200 in 137ms (next.js: 11ms, application-code: 127ms)
+ GET / 200 in 135ms (next.js: 78ms, application-code: 57ms)
+ GET / 200 in 749ms (next.js: 17ms, application-code: 732ms)
+ GET / 200 in 128ms (next.js: 5ms, application-code: 123ms)
+ GET / 200 in 211ms (next.js: 5ms, application-code: 206ms)
+[?25h
