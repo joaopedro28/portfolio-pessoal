@@ -1,0 +1,8 @@
+<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="120" rx="28" fill="#0F182B"/>
+  <path d="M58 38H92C106.359 38 118 49.6406 118 64C118 78.3594 106.359 90 92 90H58V38Z" stroke="#3156B6" stroke-width="8"/>
+  <path d="M80 56H176" stroke="#F8FAFC" stroke-opacity="0.95" stroke-width="7" stroke-linecap="round"/>
+  <path d="M80 74H152" stroke="#93A4C8" stroke-width="6" stroke-linecap="round"/>
+  <text x="142" y="70" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="24" font-weight="700">BASE</text>
+  <text x="142" y="92" fill="#93A4C8" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">COMMERCE</text>
+</svg>

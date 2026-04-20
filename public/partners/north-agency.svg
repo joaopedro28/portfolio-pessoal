@@ -1,0 +1,6 @@
+<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="120" rx="28" fill="#0F182B"/>
+  <path d="M52 86V36L84 72L116 36V86" stroke="#3156B6" stroke-width="8" stroke-linejoin="round"/>
+  <text x="142" y="66" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="24" font-weight="700">NORTH</text>
+  <text x="142" y="90" fill="#93A4C8" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">AGENCY</text>
+</svg>

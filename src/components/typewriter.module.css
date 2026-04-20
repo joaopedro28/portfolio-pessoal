@@ -1,0 +1,29 @@
+.root {
+  display: inline-flex;
+  min-height: 1.5em;
+  align-items: center;
+  gap: 0.15em;
+}
+
+.cursor {
+  color: var(--accent-strong);
+  animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  50.1%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+}
