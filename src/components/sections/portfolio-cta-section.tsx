@@ -16,22 +16,21 @@ export function PortfolioCtaSection() {
           <div className={styles.portfolioCtaCopy}>
             <span className={styles.sectionEyebrow}>Portfólio</span>
             <h2 className={styles.portfolioCtaTitle}>
-              O portfólio fica em uma página própria, com foco total nos cases.
+              Projetos desenvolvidos para marcas e agências que precisaram tirar o front‑end do papel com qualidade e ritmo..
             </h2>
             <p className={styles.portfolioCtaDescription}>
-              Na home, o foco fica na apresentação. Na página de portfólio, a
-              leitura vai direto para o trabalho.
+              Aqui você encontra cases com contexto, stack, parceiros e entregas, organizados de forma simples para quem quer avaliar como cada solução foi pensada e executada.
             </p>
           </div>
 
           <div className={styles.portfolioCtaAside}>
-            <ul className={styles.portfolioHighlightList}>
+            {/* <ul className={styles.portfolioHighlightList}>
               {highlights.map((item) => (
                 <li key={item} className={styles.portfolioHighlightItem}>
                   {item}
                 </li>
               ))}
-            </ul>
+            </ul> */}
 
             <Link href="/portfolio" className={styles.buttonPrimary}>
               Abrir portfólio

@@ -42,14 +42,12 @@ export default function PortfolioPage() {
         <section className={styles.portfolioHero}>
           <div className={styles.container}>
             <div className={styles.portfolioHeroInner}>
-              <span className={styles.sectionEyebrow}>Portfólio</span>
+              <span className={styles.portfolioEyebrow}>Portfólio</span>
               <h1 className={styles.portfolioHeroTitle}>
-                Projetos organizados em uma página própria, com leitura direta e
-                sem excesso.
+                Projetos desenvolvidos para marcas e agências que precisaram tirar o front‑end do papel com qualidade e ritmo.
               </h1>
               <p className={styles.portfolioHeroDescription}>
-                Contexto, stack, parceiros e entregáveis reunidos em uma
-                navegação simples para quem quer avaliar o trabalho.
+                Aqui você encontra cases com contexto, stack, parceiros e entregas, organizados de forma simples para quem quer avaliar como cada solução foi pensada e executada.
               </p>
             </div>
           </div>

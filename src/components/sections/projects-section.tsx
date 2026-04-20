@@ -9,12 +9,6 @@ export function ProjectsSection() {
   return (
     <section className={`${styles.section} ${styles.projectsSection}`}>
       <div className={styles.container}>
-        <SectionHeading
-          eyebrow="Portfólio"
-          title="Projetos desenvolvidos para operações que pedem clareza, ritmo e estabilidade"
-          description="Cases com contexto, stack e entregáveis apresentados de forma direta."
-        />
-
         <div className={styles.projectsGrid}>
           {projects.map((project, index) => {
             const partner = getPartnerBySlug(project.partnerSlug);
