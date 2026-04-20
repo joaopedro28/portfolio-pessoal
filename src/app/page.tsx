@@ -1,7 +1,8 @@
+import { SiteHeader } from "@/components/site-header";
 import { HeroSection } from "@/components/sections/hero-section";
 import { MetricsSection } from "@/components/sections/metrics-section";
 import { PartnersSection } from "@/components/sections/partners-section";
-import { ProjectsSection } from "@/components/sections/projects-section";
+import { PortfolioCtaSection } from "@/components/sections/portfolio-cta-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { projects, siteConfig } from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
@@ -33,7 +34,7 @@ export default function Home() {
     itemListElement: projects.map((project, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: `${siteConfig.siteUrl}/projetos/${project.slug}`,
+      url: `${siteConfig.siteUrl}/portfolio/${project.slug}`,
       name: project.name,
       description: project.summary,
     })),
@@ -46,10 +47,11 @@ export default function Home() {
       </a>
 
       <main id="conteudo" className={styles.page}>
+        <SiteHeader />
         <HeroSection />
         <MetricsSection />
         <PartnersSection />
-        <ProjectsSection />
+        <PortfolioCtaSection />
         <ContactSection />
 
         <footer className={styles.footer}>

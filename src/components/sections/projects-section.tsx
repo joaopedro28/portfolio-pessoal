@@ -7,12 +7,12 @@ import styles from "@/styles/portfolio.module.css";
 
 export function ProjectsSection() {
   return (
-    <section id="projetos" className={`${styles.section} ${styles.projectsSection}`}>
+    <section className={`${styles.section} ${styles.projectsSection}`}>
       <div className={styles.container}>
         <SectionHeading
-          eyebrow="Projetos"
-          title="Cases desenvolvidos com foco em clareza, velocidade e escala"
-          description="Cada projeto combina direção visual, implementação cuidadosa e uma base pronta para continuar evoluindo depois do lançamento."
+          eyebrow="Portfólio"
+          title="Projetos desenvolvidos para operações que pedem clareza, ritmo e estabilidade"
+          description="Cases com contexto, stack e entregáveis apresentados de forma direta."
         />
 
         <div className={styles.projectsGrid}>
@@ -26,9 +26,7 @@ export function ProjectsSection() {
                 delay={index * 100}
               >
                 <Link
-                  href={`/projetos/${project.slug}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/portfolio/${project.slug}`}
                   className={styles.projectMedia}
                 >
                   <Image
@@ -62,9 +60,7 @@ export function ProjectsSection() {
 
                   <div className={styles.projectActions}>
                     <Link
-                      href={`/projetos/${project.slug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={`/portfolio/${project.slug}`}
                       className={styles.textButton}
                     >
                       Ver projeto

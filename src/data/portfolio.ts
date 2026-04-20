@@ -56,23 +56,23 @@ export const siteConfig = {
 };
 
 export const navItems: NavItem[] = [
-  { href: "#metricas", label: "Números" },
-  { href: "#parcerias", label: "Parcerias" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#contato", label: "Contato" },
+  { href: "/#metricas", label: "Números" },
+  { href: "/#parcerias", label: "Parcerias" },
+  { href: "/portfolio", label: "Portfólio" },
+  { href: "/#contato", label: "Contato" },
 ];
 
 export const heroData = {
-  eyebrow: "Front-end para operações de e-commerce em evolução constante",
+  eyebrow: "Front-end para e-commerce em operação contínua",
   lead:
-    "Mais de 8 anos criando experiências digitais que convertem, performam bem e acompanham o ritmo real de marcas, agências e squads de growth.",
+    "Desenvolvo interfaces para e-commerce que precisam carregar bem, vender com clareza e continuar evoluindo sem retrabalho.",
   support:
-    "Atuo da camada visual à entrega em produção com foco em previsibilidade, qualidade técnica e evolução contínua de lojas e jornadas de compra.",
+    "Ao longo de 8 anos, atuei com marcas, agências e squads transformando direção visual em front-end sólido, legível e pronto para produção.",
   specialties: [
     "React e Next.js",
     "Shopify e Shopify Plus",
     "Performance e Core Web Vitals",
-    "UX e interfaces que convertem",
+    "Design systems e UX de conversão",
   ],
 };
 
@@ -81,25 +81,25 @@ export const metricItems: Metric[] = [
     value: 8,
     suffix: "+",
     label: "anos de experiência em e-commerce",
-    caption: "Vivência prática em sustentação, redesign e otimização contínua.",
+    caption: "Atuação em sustentação, redesign e evolução contínua.",
   },
   {
     value: 30,
     suffix: "+",
     label: "projetos entregues",
-    caption: "Estruturas headless, vitrines promocionais e operações escaláveis.",
+    caption: "Lojas, landing pages e frentes de otimização em produção.",
   },
   {
     value: 5,
     suffix: "+",
     label: "agências parceiras",
-    caption: "Colaborações recorrentes com times que precisam de execução confiável.",
+    caption: "Parcerias recorrentes com times que precisam de execução confiável.",
   },
   {
     value: 10,
     suffix: "+",
     label: "tecnologias dominadas",
-    caption: "React, Next.js, Shopify, TypeScript, CSS, performance e analytics.",
+    caption: "React, Next.js, Shopify, TypeScript, CSS e performance.",
   },
 ];
 
@@ -259,11 +259,11 @@ export const projects: Project[] = [
 ];
 
 export const contactData = {
-  title: "Pronto para evoluir o seu e-commerce?",
+  title: "Vamos conversar sobre a próxima entrega?",
   description:
-    "Se você precisa de um front-end confiável para lançar, refinar ou acelerar a performance da sua operação, vamos conversar.",
+    "Se você precisa de alguém para tocar o front-end com clareza técnica, bom ritmo e cuidado visual, eu posso entrar no projeto.",
   note:
-    "Canal principal: WhatsApp, com mensagem inicial já preenchida para agilizar o primeiro contato.",
+    "O WhatsApp é o canal principal. Se preferir, o e-mail também fica disponível.",
 };
 
 export function getPartnerBySlug(slug: string) {

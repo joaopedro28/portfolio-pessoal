@@ -14,8 +14,8 @@ export function PartnersSection() {
       <div className={styles.container}>
         <SectionHeading
           eyebrow="Parceiros"
-          title="Agências e times que confiam no meu ritmo de entrega"
-          description="Uma malha de colaboração construída em contexto real de operação, campanha, manutenção e evolução contínua."
+          title="Parcerias construídas no ritmo real da operação"
+          description="Times que me acionam para lançar, ajustar e evoluir front-end com consistência técnica e visual."
         />
 
         <div className={styles.partnerGrid}>

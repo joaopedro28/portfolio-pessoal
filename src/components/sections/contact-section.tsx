@@ -25,8 +25,8 @@ export function ContactSection() {
             >
               Falar no WhatsApp
             </a>
-            <Link href="#projetos" className={styles.buttonGhost}>
-              Rever projetos
+            <Link href="/portfolio" className={styles.buttonGhost}>
+              Ver portfólio
             </Link>
             <div className={styles.contactMeta}>
               <span className={styles.contactLabel}>Contato alternativo</span>

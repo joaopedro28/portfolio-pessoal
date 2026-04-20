@@ -17,7 +17,7 @@
   --radius-lg: 32px;
   --radius-md: 20px;
   --radius-sm: 14px;
-  --container: min(1120px, calc(100vw - 2rem));
+  --container: min(1360px, calc(100vw - 3rem));
 }
 
 html {
@@ -36,10 +36,7 @@ body {
   display: flex;
   flex-direction: column;
   color: var(--foreground);
-  background:
-    radial-gradient(circle at top left, rgba(49, 86, 182, 0.18), transparent 32%),
-    radial-gradient(circle at 80% 0%, rgba(79, 116, 212, 0.12), transparent 24%),
-    linear-gradient(180deg, var(--background) 0%, var(--background-bottom) 100%);
+  background: linear-gradient(180deg, #09111d 0%, #07101a 100%);
   font-family: var(--font-outfit), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -95,7 +92,7 @@ main {
 }
 
 section[id] {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 7rem;
 }
 
 ::selection {

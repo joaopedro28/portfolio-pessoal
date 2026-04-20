@@ -10,8 +10,8 @@ export function MetricsSection() {
       <div className={styles.container}>
         <SectionHeading
           eyebrow="Números"
-          title="Resultados que sustentam o discurso"
-          description="Uma leitura rápida da experiência, volume de entregas e repertório técnico que acompanham o trabalho."
+          title="Experiência, volume e repertório técnico"
+          description="Uma leitura rápida do tipo de operação, ritmo de entrega e base técnica que acompanham o meu trabalho."
         />
 
         <div className={styles.metricsGrid}>
