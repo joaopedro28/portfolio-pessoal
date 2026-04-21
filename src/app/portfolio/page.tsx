@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { SiteHeader } from "@/components/site-header";
 import { ProjectsSection } from "@/components/sections/projects-section";
-import { siteConfig } from "@/data/portfolio";
+import { SiteHeader } from "@/components/site-header";
+import { projects, siteConfig } from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
 
 export const metadata: Metadata = {
@@ -14,13 +14,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Portfólio | João Pedro",
     description:
-      "Portfólio de projetos front-end para e-commerce, com direção visual, stack e entregáveis.",
+      "Lojas e landing pages desenvolvidas para operações reais em Olist, WAKE, Shopify, NuvemShop e Uappi.",
     url: "/portfolio",
   },
   twitter: {
     title: "Portfólio | João Pedro",
     description:
-      "Portfólio de projetos front-end para e-commerce, com direção visual, stack e entregáveis.",
+      "Lojas e landing pages desenvolvidas para operações reais em Olist, WAKE, Shopify, NuvemShop e Uappi.",
   },
 };
 
@@ -47,13 +47,19 @@ export default function PortfolioPage() {
                 Projetos desenvolvidos para marcas e agências que precisaram tirar o front‑end do papel com qualidade e ritmo.
               </h1>
               <p className={styles.portfolioHeroDescription}>
-                Aqui você encontra cases com contexto, stack, parceiros e entregas, organizados de forma simples para quem quer avaliar como cada solução foi pensada e executada.
+                A listagem abaixo organiza lojas e landing pages com base no
+                site publicado, na plataforma usada e na agência com quem a
+                entrega foi construída.
               </p>
             </div>
           </div>
         </section>
 
-        <ProjectsSection />
+        <ProjectsSection
+          mode="portfolio"
+          title={`Todos os ${projects.length} projetos desta seleção`}
+          description="Cada card leva para uma ficha factual com preview do site, plataforma, agência relacionada e acesso ao projeto publicado."
+        />
       </main>
       <script
         type="application/ld+json"

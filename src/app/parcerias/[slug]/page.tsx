@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProjectCard } from "@/components/project-card";
 import { SiteHeader } from "@/components/site-header";
-import { getPartnerBySlug, partners, siteConfig } from "@/data/portfolio";
+import {
+  agencies,
+  getAgencyBySlug,
+  getHostnameLabel,
+  getProjectsByAgencySlug,
+  siteConfig,
+} from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
 
 type PartnerPageProps = {
@@ -11,51 +18,52 @@ type PartnerPageProps = {
 };
 
 export async function generateStaticParams() {
-  return partners.map((partner) => ({ slug: partner.slug }));
+  return agencies.map((agency) => ({ slug: agency.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PartnerPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const partner = getPartnerBySlug(slug);
+  const agency = getAgencyBySlug(slug);
 
-  if (!partner) {
+  if (!agency) {
     return {};
   }
 
   return {
-    title: partner.name,
-    description: partner.summary,
+    title: agency.name,
+    description: agency.summary,
     alternates: {
-      canonical: `/parcerias/${partner.slug}`,
+      canonical: `/parcerias/${agency.slug}`,
     },
     openGraph: {
-      title: `${partner.name} | João Pedro`,
-      description: partner.summary,
-      url: `/parcerias/${partner.slug}`,
+      title: `${agency.name} | João Pedro`,
+      description: agency.summary,
+      url: `/parcerias/${agency.slug}`,
     },
     twitter: {
-      title: `${partner.name} | João Pedro`,
-      description: partner.summary,
+      title: `${agency.name} | João Pedro`,
+      description: agency.summary,
     },
   };
 }
 
 export default async function PartnerPage({ params }: PartnerPageProps) {
   const { slug } = await params;
-  const partner = getPartnerBySlug(slug);
+  const agency = getAgencyBySlug(slug);
 
-  if (!partner) {
+  if (!agency) {
     notFound();
   }
 
-  const partnerSchema = {
+  const agencyProjects = getProjectsByAgencySlug(agency.slug);
+  const agencySchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: partner.name,
-    description: partner.summary,
-    url: `${siteConfig.siteUrl}/parcerias/${partner.slug}`,
+    name: agency.name,
+    description: agency.summary,
+    url: agency.website,
   };
 
   return (
@@ -66,64 +74,100 @@ export default async function PartnerPage({ params }: PartnerPageProps) {
         <section className={styles.detailPage}>
           <div className={styles.detailShell}>
             <div className={styles.detailBreadcrumb}>
-              <Link href="/" className={styles.backLink}>
-                ← Voltar ao início
+              <Link href="/#agencias" className={styles.backLink}>
+                ← Voltar para agências
               </Link>
             </div>
 
             <section className={styles.detailHero}>
-              <span className={styles.detailEyebrow}>{partner.role}</span>
-              <h1 className={styles.detailTitle}>{partner.name}</h1>
-              <p className={styles.detailLead}>{partner.summary}</p>
+              <span className={styles.detailEyebrow}>Agência parceira</span>
+              <h1 className={styles.detailTitle}>{agency.name}</h1>
+              <p className={styles.detailLead}>{agency.summary}</p>
               <p className={styles.detailSummary}>
-                &ldquo;{partner.quote}&rdquo;
+                {agency.projectCount} projetos desta seleção foram publicados com
+                esta parceria, distribuídos entre {agency.platforms.join(", ")}.
               </p>
 
-              <div className={styles.detailPanel}>
-                <Image
-                  src={partner.logo}
-                  alt={partner.logoAlt}
-                  width={320}
-                  height={120}
-                />
+              <div className={styles.agencyHeroPanel}>
+                <div className={styles.detailPanel}>
+                  <Image
+                    src={agency.logo}
+                    alt={agency.logoAlt}
+                    width={320}
+                    height={120}
+                    className={styles.agencyDetailLogo}
+                  />
+                </div>
+
+                <aside className={styles.detailPanel}>
+                  <h2 className={styles.detailPanelTitle}>Dados rápidos</h2>
+                  <dl className={styles.detailFactList}>
+                    <div className={styles.detailFactItem}>
+                      <dt className={styles.detailFactTerm}>Site oficial</dt>
+                      <dd className={styles.detailFactValue}>
+                        {getHostnameLabel(agency.website)}
+                      </dd>
+                    </div>
+                    <div className={styles.detailFactItem}>
+                      <dt className={styles.detailFactTerm}>Projetos</dt>
+                      <dd className={styles.detailFactValue}>
+                        {agency.projectCount} nesta vitrine
+                      </dd>
+                    </div>
+                    <div className={styles.detailFactItem}>
+                      <dt className={styles.detailFactTerm}>Plataformas</dt>
+                      <dd className={styles.detailFactValue}>
+                        {agency.platforms.join(", ")}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <div className={styles.detailActions}>
+                    <a
+                      href={agency.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.buttonSecondary}
+                    >
+                      Abrir site da agência
+                    </a>
+                    <a
+                      href={siteConfig.whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.buttonPrimary}
+                    >
+                      Conversar sobre um projeto
+                    </a>
+                  </div>
+                </aside>
               </div>
             </section>
 
-            <section className={styles.detailGrid}>
-              <article className={styles.detailPanel}>
-                <h2 className={styles.detailPanelTitle}>Frentes de colaboração</h2>
-                <ul className={styles.detailList}>
-                  {partner.capabilities.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
+            <section className={styles.detailRelatedSection}>
+              <div className={styles.detailSectionHeading}>
+                <span className={styles.sectionEyebrow}>Projetos</span>
+                <h2 className={styles.detailSectionTitle}>
+                  Projetos publicados com {agency.name}
+                </h2>
+              </div>
 
-              <aside className={styles.detailPanel}>
-                <h2 className={styles.detailPanelTitle}>Próximo passo</h2>
-                <p className={styles.detailSummary}>
-                  Se o seu time precisa de alguém para somar em ciclos de
-                  e-commerce com autonomia, cuidado visual e leitura de negócio,
-                  o contato já está pronto.
-                </p>
-                <div className={styles.detailActions}>
-                  <a
-                    href={siteConfig.whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.buttonPrimary}
-                  >
-                    Falar no WhatsApp
-                  </a>
-                </div>
-              </aside>
+              <div className={styles.projectsGrid}>
+                {agencyProjects.map((project) => (
+                  <ProjectCard
+                    key={project.slug}
+                    project={project}
+                    showAgency={false}
+                  />
+                ))}
+              </div>
             </section>
           </div>
         </section>
       </main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(partnerSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(agencySchema) }}
       />
     </>
   );

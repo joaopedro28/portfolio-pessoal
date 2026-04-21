@@ -1,9 +1,10 @@
-import { SiteHeader } from "@/components/site-header";
+import { ContactSection } from "@/components/sections/contact-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { MetricsSection } from "@/components/sections/metrics-section";
-import { PartnersSection } from "@/components/sections/partners-section";
+import { AgenciesSection } from "@/components/sections/partners-section";
 import { PortfolioCtaSection } from "@/components/sections/portfolio-cta-section";
-import { ContactSection } from "@/components/sections/contact-section";
+import { ProjectsSection } from "@/components/sections/projects-section";
+import { SiteHeader } from "@/components/site-header";
 import { projects, siteConfig } from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
 
@@ -50,7 +51,8 @@ export default function Home() {
         <SiteHeader />
         <HeroSection />
         <MetricsSection />
-        <PartnersSection />
+        <AgenciesSection />
+        {/* <ProjectsSection mode="home" /> */}
         <PortfolioCtaSection />
         <ContactSection />
 

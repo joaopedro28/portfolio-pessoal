@@ -2,50 +2,64 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatedReveal } from "@/components/animated-reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { partners } from "@/data/portfolio";
+import { agencies, getHostnameLabel } from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
 
-export function PartnersSection() {
+export function AgenciesSection() {
   return (
     <section
-      id="parcerias"
+      id="agencias"
       className={`${styles.section} ${styles.partnersSection}`}
     >
       <div className={styles.container}>
         <SectionHeading
-          eyebrow="Parceiros"
-          title="Parcerias construídas no ritmo real da operação"
-          description="Times que me acionam para lançar, ajustar e evoluir front-end com consistência técnica e visual."
+          eyebrow="Agências"
+          title="Times recorrentes para colocar lojas e campanhas no ar"
+          description="Agências com quem trabalhei em operações reais de e-commerce, com entregas publicadas em diferentes plataformas e ritmos de projeto."
         />
 
         <div className={styles.partnerGrid}>
-          {partners.map((partner, index) => (
+          {agencies.map((agency, index) => (
             <AnimatedReveal
-              key={partner.slug}
+              key={agency.slug}
               className={styles.partnerCard}
               delay={index * 70}
             >
               <Link
-                href={`/parcerias/${partner.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/parcerias/${agency.slug}`}
                 className={styles.partnerLink}
               >
                 <div className={styles.partnerLogoBox}>
                   <Image
-                    src={partner.logo}
-                    alt={partner.logoAlt}
+                    src={agency.logo}
+                    alt={agency.logoAlt}
                     width={184}
                     height={72}
                     className={styles.partnerLogo}
                   />
                 </div>
+
                 <div className={styles.partnerCopy}>
-                  <span className={styles.partnerRole}>{partner.role}</span>
-                  <h3 className={styles.partnerName}>{partner.name}</h3>
-                  <p className={styles.partnerSummary}>{partner.summary}</p>
+                  <div className={styles.partnerMetaRow}>
+                    {/* <span className={styles.partnerRole}>
+                      {agency.projectCount} projetos
+                    </span> */}
+                    <span className={styles.partnerMetaDot} />
+                    <span className={styles.partnerHost}>
+                      {getHostnameLabel(agency.website)}
+                    </span>
+                  </div>
+                  <h3 className={styles.partnerName}>{agency.name}</h3>
+                  <p className={styles.partnerSummary}>{agency.summary}</p>
                 </div>
-                <p className={styles.partnerQuote}>&ldquo;{partner.quote}&rdquo;</p>
+
+                <ul className={styles.partnerPlatformList} aria-label="Plataformas atendidas">
+                  {agency.platforms.map((platform) => (
+                    <li key={platform} className={styles.tag}>
+                      {platform}
+                    </li>
+                  ))}
+                </ul>
               </Link>
             </AnimatedReveal>
           ))}

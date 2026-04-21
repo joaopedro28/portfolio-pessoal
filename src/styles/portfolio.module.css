@@ -543,6 +543,7 @@
   display: grid;
   gap: 1.15rem;
   height: 100%;
+  align-content: start;
   padding: 1.45rem;
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -588,12 +589,31 @@
   gap: 0.45rem;
 }
 
+.partnerMetaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
 .partnerRole {
   color: #adc0ee;
   font-size: 0.78rem;
   font-family: var(--font-geist-mono), monospace;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.partnerMetaDot {
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background: rgba(147, 164, 200, 0.45);
+}
+
+.partnerHost {
+  color: var(--foreground-muted);
+  font-size: 0.82rem;
 }
 
 .partnerName {
@@ -605,6 +625,13 @@
   color: var(--foreground-muted);
   font-size: 0.9rem;
   line-height: 1.7;
+}
+
+.partnerPlatformList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  list-style: none;
 }
 
 .partnerQuote {
@@ -718,6 +745,7 @@
 
 .projectCard {
   display: grid;
+  height: 100%;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -776,6 +804,7 @@
 .projectBody {
   display: grid;
   gap: 1rem;
+  align-content: start;
   padding: 1.4rem;
 }
 
@@ -784,6 +813,11 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.projectHeadingBlock {
+  display: grid;
+  gap: 0.45rem;
 }
 
 .projectTitle {
@@ -798,10 +832,42 @@
   letter-spacing: 0.08em;
 }
 
+.projectKind {
+  flex-shrink: 0;
+  border: 1px solid rgba(147, 164, 200, 0.12);
+  border-radius: 999px;
+  padding: 0.4rem 0.72rem;
+  background: rgba(147, 164, 200, 0.06);
+  color: var(--foreground);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
 .projectDescription {
   color: var(--foreground-muted);
   font-size: 0.92rem;
   line-height: 1.64;
+}
+
+.projectMetaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.projectMetaLabel {
+  color: var(--foreground-muted);
+  font-size: 0.82rem;
+  font-family: var(--font-geist-mono), monospace;
+  text-transform: lowercase;
+}
+
+.projectMetaDivider {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background: rgba(147, 164, 200, 0.35);
 }
 
 .tagList {
@@ -1020,7 +1086,7 @@
 
 .detailMedia {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   margin-top: 1.5rem;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1030,6 +1096,7 @@
 
 .detailImage {
   object-fit: cover;
+  object-position: top;
 }
 
 .detailGrid {
@@ -1050,6 +1117,50 @@
 
 .detailPanelTitle {
   font-size: 1.02rem;
+}
+
+.agencyHeroPanel {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.agencyDetailLogo {
+  width: 100%;
+  height: auto;
+  max-width: 20rem;
+}
+
+.detailFactList {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.detailFactItem {
+  display: grid;
+  gap: 0.3rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(147, 164, 200, 0.14);
+}
+
+.detailFactItem:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.detailFactTerm {
+  color: var(--foreground-muted);
+  font-size: 0.78rem;
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.detailFactValue {
+  color: var(--foreground-strong);
+  font-size: 0.94rem;
+  line-height: 1.6;
 }
 
 .detailList {
@@ -1081,6 +1192,24 @@
   gap: 0.85rem;
 }
 
+.detailRelatedSection {
+  display: grid;
+  gap: 1.4rem;
+  margin-top: 2rem;
+}
+
+.detailSectionHeading {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 42rem;
+}
+
+.detailSectionTitle {
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
 .notFound {
   display: grid;
   place-items: center;
@@ -1104,7 +1233,8 @@
   .heroGrid,
   .portfolioCtaPanel,
   .contactPanel,
-  .detailGrid {
+  .detailGrid,
+  .agencyHeroPanel {
     grid-template-columns: 1fr;
   }
 

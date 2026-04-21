@@ -14,12 +14,15 @@ export function PortfolioCtaSection() {
       <div className={styles.container}>
         <AnimatedReveal className={styles.portfolioCtaPanel}>
           <div className={styles.portfolioCtaCopy}>
-            <span className={styles.sectionEyebrow}>Portfólio</span>
+            <span className={styles.sectionEyebrow}>Portfólio completo</span>
             <h2 className={styles.portfolioCtaTitle}>
-              Projetos desenvolvidos para marcas e agências que precisaram tirar o front‑end do papel com qualidade e ritmo..
+              A home mostra uma curadoria. A listagem completa organiza todas as
+              entregas por agência, plataforma e site publicado.
             </h2>
             <p className={styles.portfolioCtaDescription}>
-              Aqui você encontra cases com contexto, stack, parceiros e entregas, organizados de forma simples para quem quer avaliar como cada solução foi pensada e executada.
+              Se você quer revisar o repertório inteiro, abrir cada ficha e
+              navegar entre lojas e landing pages em detalhe, a página de
+              portfólio concentra tudo em uma leitura mais direta.
             </p>
           </div>
 
@@ -33,7 +36,7 @@ export function PortfolioCtaSection() {
             </ul> */}
 
             <Link href="/portfolio" className={styles.buttonPrimary}>
-              Abrir portfólio
+              Ver todos os projetos
             </Link>
           </div>
         </AnimatedReveal>

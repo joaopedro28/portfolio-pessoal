@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Portfólio João Pedro",
     title: "João Pedro | Desenvolvedor Front-end",
     description:
-      "Projetos, parcerias e contato de João Pedro, especialista em experiências front-end para e-commerce.",
+      "Projetos, agências parceiras e contato de João Pedro, especialista em experiências front-end para e-commerce.",
     images: [
       {
         url: "/opengraph-image",

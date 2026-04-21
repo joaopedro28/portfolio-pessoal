@@ -11,29 +11,30 @@ export type Metric = {
   suffix?: string;
 };
 
-export type Partner = {
+export type Agency = {
   slug: string;
   name: string;
-  role: string;
-  summary: string;
-  quote: string;
+  website: string;
   logo: string;
   logoAlt: string;
-  capabilities: string[];
+  summary: string;
+  platforms: string[];
+  projectCount: number;
 };
+
+export type ProjectKind = "store" | "landing-page";
 
 export type Project = {
   slug: string;
   name: string;
-  segment: string;
-  summary: string;
-  overview: string;
-  impact: string[];
-  deliverables: string[];
-  stack: string[];
+  website: string;
+  platform: string;
+  agencySlug: string;
   image: string;
   imageAlt: string;
-  partnerSlug: string;
+  kind: ProjectKind;
+  featuredOnHome: boolean;
+  summary: string;
 };
 
 export type HeroOrbitItem = {
@@ -62,42 +63,40 @@ export const siteConfig = {
 };
 
 export const navItems: NavItem[] = [
-  { href: "/#parcerias", label: "Parcerias" },
+  { href: "/#agencias", label: "Agências" },
+  { href: "/#projetos", label: "Projetos" },
   { href: "/portfolio", label: "Portfólio" },
   { href: "/#contato", label: "Contato" },
 ];
 
 export const heroData = {
-  // Ajuste de posicionamento: enfatiza o foco em e-commerce e apresenta o serviço de forma mais comercial
   eyebrow: "Freelancer especializado em e-commerce",
   lead:
     "Front-end para e-commerce com foco em performance, conversão e operação sem retrabalho.",
-  // Complementa o texto de apoio com contexto de experiência, tipos de serviço oferecidos e clareza de processo
   support:
-    "Atuo há 8 anos desenvolvendo e evoluindo lojas virtuais para marcas e agências que precisam de execução confiável, cuidado visual e velocidade para colocar projetos no ar. Entro bem em sustentação, implementação, replatform e melhorias contínuas, transformando layout em entrega pronta para produção, com base técnica clara e pensada para o dia a dia da operação.",
-  // Lista reorganizada de especialidades com foco em plataformas, stack e serviços essenciais
+    "Atuo há 8 anos desenvolvendo, refinando e publicando experiências de compra para marcas e agências que precisam de ritmo, clareza técnica e cuidado visual. Entro bem em sustentação, implementação, replatform e melhorias contínuas, tirando projetos do layout para produção com consistência.",
   specialties: [
-    "Shopify",
     "Olist",
+    "WAKE",
+    "Shopify",
     "NuvemShop",
+    "Uappi",
     "React e Next.js",
-    "Performance",
-    "CRO",
     "Sustentação front-end",
-    "Melhorias pontuais",
+    "Melhorias contínuas",
   ],
 };
 
 export const heroOrbitItems: HeroOrbitItem[] = [
-  { label: "Olist by Vnda", orbit: 2, angle: 1 },
-  { label: "Shopify", orbit: 2, angle: 40 },
-  { label: "NuvemShop", orbit: 2, angle: 80 },
-  { label: "Performance", orbit: 2, angle: 120 },
+  { label: "Olist", orbit: 2, angle: 4 },
+  { label: "WAKE", orbit: 2, angle: 42 },
+  { label: "Shopify", orbit: 2, angle: 82 },
+  { label: "NuvemShop", orbit: 2, angle: 121 },
   { label: "Uappi", orbit: 2, angle: 160 },
-  { label: "E-commerce", orbit: 2, angle: 200 },
-  { label: "Melhorias", orbit: 2, angle: 240 },
-  { label: "Análise de CRO", orbit: 2, angle: 280 },
-  { label: "Sustentação", orbit: 2, angle: 320 },
+  { label: "E-commerce", orbit: 2, angle: 201 },
+  { label: "Performance", orbit: 2, angle: 241 },
+  { label: "Landing Pages", orbit: 2, angle: 281 },
+  { label: "Sustentação", orbit: 2, angle: 321 },
 ];
 
 export const metricItems: Metric[] = [
@@ -105,210 +104,420 @@ export const metricItems: Metric[] = [
     value: 8,
     suffix: "+",
     label: "anos de experiência em e-commerce",
-    // Amplia o escopo da atuação, destacando sustentação e evolução contínua em lojas virtuais
-    caption: "Atuação em sustentação, implementação, redesign e evolução contínua de lojas virtuais.",
+    caption:
+      "Atuação em sustentação, implementação, redesign e evolução contínua de lojas virtuais.",
   },
   {
-    value: 80,
-    suffix: "+",
-    label: "projetos entregues",
-    // Foca nos resultados tangíveis dos projetos em produção
-    caption: "Projetos publicados com foco em usabilidade, performance e execução confiável.",
+    value: 22,
+    label: "projetos publicados nesta seleção",
+    caption:
+      "Recorte real de lojas e landing pages entregues em parceria com agências de e-commerce.",
   },
   {
-    value: 8,
-    suffix: "+",
-    label: "agências parceiras",
-    // Explica o valor da parceria sob a ótica de apoio técnico especializado
-    caption: "Parcerias recorrentes com times que precisam de apoio técnico forte no front-end.",
+    value: 5,
+    label: "agências parceiras nesta vitrine",
+    caption:
+      "Parcerias recorrentes com times que precisam de apoio técnico forte no front-end.",
   },
   {
-    value: 10,
-    suffix: "+",
-    label: "plataformas e stacks no repertório",
-    // Detalha as plataformas e aponta a expertise em arquiteturas React/Next.js
-    caption: "Experiência com Shopify, Olist, NuvemShop, Wake, Tray, Uappi e arquiteturas em React/Next.js.",
+    value: 5,
+    label: "plataformas representadas",
+    caption:
+      "Projetos publicados em Olist, WAKE, Shopify, NuvemShop e Uappi.",
   },
 ];
 
-export const partners: Partner[] = [
+export const agencies: Agency[] = [
   {
-    slug: "base-commerce",
-    name: "Base Commerce",
-    role: "Squad partner",
+    slug: "auaha",
+    name: "Auaha",
+    website: "https://auaha.com.br",
+    logo: "/agencies/auaha.svg",
+    logoAlt: "Logo da Auaha",
     summary:
-      // Esclarece o tipo de apoio fornecido em operações de grande volume
-      "Apoio recorrente em sustentação front-end, campanhas sazonais e melhorias de experiência para operações com alto volume de atualização.",
-    quote:
-      "Confiança para entrar rápido no contexto, resolver o que importa e manter ritmo de entrega.",
-    logo: "/partners/base-commerce.svg",
-    logoAlt: "Logo da Base Commerce",
-    capabilities: [
-      "Sustentação front-end",
-      "Campanhas sazonais",
-      "Melhorias de performance",
-    ],
+      "Agência com foco em marketing digital e e-commerce, atuando na construção e evolução de operações digitais.",
+    platforms: ["Olist", "WAKE", "Shopify"],
+    projectCount: 5,
   },
   {
-    slug: "layer-studio",
-    name: "Layer Studio",
-    role: "Design to build",
+    slug: "tec4u",
+    name: "Tec4u",
+    website: "https://www.tec4udigital.com",
+    logo: "/agencies/tec4u.svg",
+    logoAlt: "Logo da Tec4u",
     summary:
-      // Foca na entrega de interfaces prontas com consistência visual e atenção à acessibilidade
-      "Integração próxima entre design e desenvolvimento para entregar interfaces prontas para produção, com consistência visual e atenção a acessibilidade.",
-    quote:
-      "Execução refinada, consistente com o layout e sem abrir mão de acessibilidade.",
-    logo: "/partners/layer-studio.svg",
-    logoAlt: "Logo da Layer Studio",
-    capabilities: [
-      "Design system",
-      "Implementação pixel-precise",
-      "Motion e interação",
-    ],
+      "Agência 360º especializada em e-commerce, marketing digital e desenvolvimento web para marcas em crescimento.",
+    platforms: ["NuvemShop", "Uappi"],
+    projectCount: 5,
   },
   {
-    slug: "north-agency",
-    name: "North Agency",
-    role: "Growth partner",
+    slug: "orbit",
+    name: "Orbit",
+    website: "https://orbitads.com.br/",
+    logo: "/agencies/orbitads.png",
+    logoAlt: "Marca da Orbit",
     summary:
-      // Acentua a ênfase em conversão e experimentação contínua ao longo do funil
-      "Projetos voltados para conversão, testes de interface e otimização das etapas-chave do funil.",
-    quote:
-      "Boa leitura de negócio e velocidade para transformar hipótese em entrega mensurável.",
-    logo: "/partners/north-agency.svg",
-    logoAlt: "Logo da North Agency",
-    capabilities: [
-      "CRO",
-      "Experimentos visuais",
-      "Landing pages para mídia",
-    ],
+      "Agência parceira voltada a mídia e performance para operações de e-commerce, aqui representada com identidade local estável.",
+    platforms: ["Olist"],
+    projectCount: 1,
   },
   {
-    slug: "orbit-performance",
-    name: "Orbit Performance",
-    role: "Performance partner",
+    slug: "mahara",
+    name: "Mahara",
+    website: "https://mahara.marketing",
+    logo: "/agencies/mahara-mark.svg",
+    logoAlt: "Símbolo da Mahara",
     summary:
-      // Destaca o foco em impacto real e em operações com catálogos extensos
-      "Ajustes de carregamento, renderização e estabilidade visual em operações com catálogos amplos e foco em impacto real.",
-    quote:
-      "Foco técnico com visão prática sobre impacto real em experiência e receita.",
-    logo: "/partners/orbit-performance.svg",
-    logoAlt: "Logo da Orbit Performance",
-    capabilities: [
-      "Core Web Vitals",
-      "Bundles críticos",
-      "Observabilidade de front-end",
-    ],
+      "Agência com foco em estratégia, branding e performance digital para marcas que precisam crescer com direção clara.",
+    platforms: ["Olist"],
+    projectCount: 6,
   },
   {
-    slug: "retail-lab",
-    name: "Retail Lab",
-    role: "E-commerce partner",
+    slug: "tec3ecommerce",
+    name: "Tec3ecommerce",
+    website: "https://tec3commerce.com.br",
+    logo: "/agencies/tec3commerce.png",
+    logoAlt: "Marca da Tec3ecommerce",
     summary:
-      // Aponta para o ritmo e a qualidade mantidos em projetos de expansão
-      "Projetos de replatform, novas vitrines e evolução visual para operações digitais em expansão, mantendo ritmo e qualidade.",
-    quote:
-      "Parceria sólida para acelerar lançamentos sem perder padrão de qualidade.",
-    logo: "/partners/retail-lab.svg",
-    logoAlt: "Logo da Retail Lab",
-    capabilities: [
-      "Replatform",
-      "Shopify",
-      "Arquitetura front-end",
-    ],
+      "Operação digital focada em implementação e evolução de lojas virtuais, com repertório forte em Olist e NuvemShop.",
+    platforms: ["Olist", "NuvemShop"],
+    projectCount: 5,
   },
 ];
 
 export const projects: Project[] = [
   {
-    slug: "replatform-shopify-plus",
-    name: "Replatform Shopify Plus",
-    segment: "Moda premium",
+    slug: "paisano-brew-co",
+    name: "Paisano Brew Co",
+    website: "https://paisanobrew.co",
+    platform: "Olist",
+    agencySlug: "auaha",
+    image: "/projects/sites/paisano-brew.png",
+    imageAlt: "Preview do site Paisano Brew Co",
+    kind: "store",
+    featuredOnHome: false,
     summary:
-      // Realça objetivos claros: experiência mobile, ritmo de campanhas e base previsível para evolução
-      "Redesenho front-end de uma operação de moda premium, com foco em melhorar a experiência mobile, acelerar campanhas e criar uma base mais previsível para evolução da loja.",
-    overview:
-      "Uma base visual mais sólida, componentes reutilizáveis e performance tratada como parte do produto, não como etapa final.",
-    impact: [
-      "Arquitetura preparada para campanhas sazonais e mudanças rápidas de conteúdo.",
-      "Experiência mobile refinada para navegação de coleção, busca e página de produto.",
-      "Melhor legibilidade do design system para preservar consistência em novas entregas.",
-    ],
-    deliverables: [
-      "Hero e vitrines editoriais",
-      "Página de produto com blocos modulares",
-      "Ajustes de carregamento e estabilidade visual",
-    ],
-    stack: ["Shopify Plus", "React", "TypeScript", "SCSS"],
-    image: "/projects/replatform-shopify-plus.svg",
-    imageAlt: "Visual abstrato do projeto Replatform Shopify Plus",
-    partnerSlug: "retail-lab",
+      "Loja publicada em Olist para a Paisano Brew Co, entregue em parceria com a Auaha.",
   },
   {
-    slug: "storefront-next-commerce",
-    name: "Storefront Next Commerce",
-    segment: "Cosméticos D2C",
+    slug: "coisas-da-lu-sigaud",
+    name: "Coisas da Lu Sigaud",
+    website: "https://www.coisasdalusigaud.com.br",
+    platform: "Olist",
+    agencySlug: "auaha",
+    image: "/projects/sites/coisas-da-lu-sigaud.png",
+    imageAlt: "Preview do site Coisas da Lu Sigaud",
+    kind: "store",
+    featuredOnHome: true,
     summary:
-      // Sinaliza a implementação em Next.js e descreve melhor a navegação entre seções da loja
-      "Implementação de storefront em Next.js com foco em marca, organização de conteúdo e uma navegação mais eficiente entre coleção, categoria e produto.",
-    overview:
-      "O projeto equilibra atmosfera de marca com uma arquitetura front-end robusta, preparada para expansão de catálogo e campanhas.",
-    impact: [
-      "Seções modulares para lançamentos rápidos sem retrabalho em cada campanha.",
-      "Fluxos de navegação mais claros entre editorial, categoria e produto.",
-      "Base pronta para evoluções futuras com conteúdo localizado e novas coleções.",
-    ],
-    deliverables: [
-      "Landing pages de coleção",
-      "Blocos de storytelling",
-      "Integração com analytics e eventos-chave",
-    ],
-    stack: ["Next.js", "React", "TypeScript", "CSS Modules"],
-    image: "/projects/storefront-next-commerce.svg",
-    imageAlt: "Visual abstrato do projeto Storefront Next Commerce",
-    partnerSlug: "layer-studio",
+      "Loja publicada em Olist para a Coisas da Lu Sigaud, entregue em parceria com a Auaha.",
   },
   {
-    slug: "portal-b2b-escalavel",
-    name: "Portal B2B escalável",
-    segment: "Distribuição e catálogo técnico",
+    slug: "karla-vivian-atelier",
+    name: "Karla Vivian Atelier",
+    website: "https://www.karlavivianatelier.com.br",
+    platform: "Olist",
+    agencySlug: "auaha",
+    image: "/projects/sites/karla-vivian-atelier.png",
+    imageAlt: "Preview do site Karla Vivian Atelier",
+    kind: "store",
+    featuredOnHome: true,
     summary:
-      // Explica a estrutura do portal ressaltando desempenho, usabilidade e base para crescimento
-      "Estruturação de um portal com grande volume de SKUs, priorizando desempenho, usabilidade em jornadas técnicas e uma base sólida para crescimento do catálogo.",
-    overview:
-      "Uma experiência mais limpa para consulta de produtos, filtros avançados e área autenticada com base pronta para evolução contínua.",
-    impact: [
-      "Estrutura de componentes desenhada para crescimento de catálogo sem perda de consistência.",
-      "Navegação otimizada para reduzir atrito em buscas e comparações técnicas.",
-      "Melhor base para acompanhamento de comportamento e priorização de próximos ciclos.",
-    ],
-    deliverables: [
-      "Listagem de produtos com filtros",
-      "Área logada com foco em usabilidade",
-      "Aprimoramentos de carregamento e renderização",
-    ],
-    stack: ["Next.js", "React", "Shopify", "Analytics"],
-    image: "/projects/portal-b2b-escalavel.svg",
-    imageAlt: "Visual abstrato do projeto Portal B2B escalável",
-    partnerSlug: "orbit-performance",
+      "Loja publicada em Olist para o atelier Karla Vivian, entregue em parceria com a Auaha.",
+  },
+  {
+    slug: "indauto",
+    name: "Indauto",
+    website: "https://indauto.com.br",
+    platform: "WAKE",
+    agencySlug: "auaha",
+    image: "/projects/sites/indauto.png",
+    imageAlt: "Preview do site Indauto",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Operação publicada em WAKE para a Indauto, entregue em parceria com a Auaha.",
+  },
+  {
+    slug: "let-me-be-sem-pausa",
+    name: "Let Me Be — Sem Pausa",
+    website: "https://www.letmebe.com.br/pages/lp-sem-pausa",
+    platform: "Shopify",
+    agencySlug: "auaha",
+    image: "/projects/sites/let-me-be-sem-pausa.png",
+    imageAlt: "Preview da landing page Sem Pausa da Let Me Be",
+    kind: "landing-page",
+    featuredOnHome: true,
+    summary:
+      "Landing page em Shopify para a campanha Sem Pausa da Let Me Be, entregue em parceria com a Auaha.",
+  },
+  {
+    slug: "crayons",
+    name: "Crayons São Paulo",
+    website: "https://www.crayons.com.br",
+    platform: "Olist",
+    agencySlug: "orbit",
+    image: "/projects/sites/crayons.png",
+    imageAlt: "Preview do site Crayons São Paulo",
+    kind: "store",
+    featuredOnHome: true,
+    summary:
+      "Loja publicada em Olist para a Crayons São Paulo, entregue em parceria com a Orbit.",
+  },
+  {
+    slug: "abu-dhabi-professional",
+    name: "Abu Dhabi Professional",
+    website: "https://www.abudhabiprofessional.com",
+    platform: "Olist",
+    agencySlug: "tec3ecommerce",
+    image: "/projects/sites/abu-dhabi-professional.png",
+    imageAlt: "Preview do site Abu Dhabi Professional",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Abu Dhabi Professional, entregue em parceria com a Tec3ecommerce.",
+  },
+  {
+    slug: "salty-vibe",
+    name: "Salty Vibe",
+    website: "https://www.saltyvibe.com.br",
+    platform: "Olist",
+    agencySlug: "tec3ecommerce",
+    image: "/projects/sites/salty-vibe.png",
+    imageAlt: "Preview do site Salty Vibe",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Salty Vibe, entregue em parceria com a Tec3ecommerce.",
+  },
+  {
+    slug: "subliarte-sublimacao",
+    name: "SubliArte Sublimação",
+    website: "https://www.subliartesublimacao.com.br",
+    platform: "NuvemShop",
+    agencySlug: "tec3ecommerce",
+    image: "/projects/sites/subliarte-sublimacao.png",
+    imageAlt: "Preview do site SubliArte Sublimação",
+    kind: "store",
+    featuredOnHome: true,
+    summary:
+      "Loja publicada em NuvemShop para a SubliArte Sublimação, entregue em parceria com a Tec3ecommerce.",
+  },
+  {
+    slug: "midias2",
+    name: "Mídias 2 Print",
+    website: "https://www.midias2.com.br",
+    platform: "Olist",
+    agencySlug: "tec3ecommerce",
+    image: "/projects/sites/midias2.png",
+    imageAlt: "Preview do site Mídias 2 Print",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Mídias 2 Print, entregue em parceria com a Tec3ecommerce.",
+  },
+  {
+    slug: "use-ofelia",
+    name: "Use Ofélia",
+    website: "https://www.useofelia.com.br",
+    platform: "Olist",
+    agencySlug: "tec3ecommerce",
+    image: "/projects/sites/use-ofelia.png",
+    imageAlt: "Preview do site Use Ofélia",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Use Ofélia, entregue em parceria com a Tec3ecommerce.",
+  },
+  {
+    slug: "flexpop",
+    name: "FlexPop",
+    website: "https://www.flexpop.com.br",
+    platform: "Olist",
+    agencySlug: "mahara",
+    image: "/projects/sites/flexpop.png",
+    imageAlt: "Preview do site FlexPop",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a FlexPop, entregue em parceria com a Mahara.",
+  },
+  {
+    slug: "musky-parfum",
+    name: "Musky Parfum",
+    website: "https://www.muskyparfum.com.br",
+    platform: "Olist",
+    agencySlug: "mahara",
+    image: "/projects/sites/musky-parfum.png",
+    imageAlt: "Preview do site Musky Parfum",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Musky Parfum, entregue em parceria com a Mahara.",
+  },
+  {
+    slug: "nous-joalheria",
+    name: "Nous Joalheria",
+    website: "https://www.nousjoalheria.com.br",
+    platform: "Olist",
+    agencySlug: "mahara",
+    image: "/projects/sites/nous-joalheria.png",
+    imageAlt: "Preview do site Nous Joalheria",
+    kind: "store",
+    featuredOnHome: true,
+    summary:
+      "Loja publicada em Olist para a Nous Joalheria, entregue em parceria com a Mahara.",
+  },
+  {
+    slug: "ju-bochner",
+    name: "Ju Bochner",
+    website: "https://www.jubochner.com.br",
+    platform: "Olist",
+    agencySlug: "mahara",
+    image: "/projects/sites/ju-bochner.png",
+    imageAlt: "Preview do site Ju Bochner",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Ju Bochner, entregue em parceria com a Mahara.",
+  },
+  {
+    slug: "tramadas",
+    name: "Tramadas",
+    website: "https://www.tramadas.com.br",
+    platform: "Olist",
+    agencySlug: "mahara",
+    image: "/projects/sites/tramadas.png",
+    imageAlt: "Preview do site Tramadas",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Tramadas, entregue em parceria com a Mahara.",
+  },
+  {
+    slug: "los-borbas",
+    name: "Los Borbas",
+    website: "https://www.losborbas.com.br",
+    platform: "Olist",
+    agencySlug: "mahara",
+    image: "/projects/sites/los-borbas.png",
+    imageAlt: "Preview do site Los Borbas",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Los Borbas, entregue em parceria com a Mahara.",
+  },
+  {
+    slug: "cafe-com-deus-pai",
+    name: "Café com Deus Pai",
+    website: "https://www.cafecomdeuspai.com",
+    platform: "NuvemShop",
+    agencySlug: "tec4u",
+    image: "/projects/sites/cafe-com-deus-pai.png",
+    imageAlt: "Preview do site Café com Deus Pai",
+    kind: "store",
+    featuredOnHome: true,
+    summary:
+      "Loja publicada em NuvemShop para o Café com Deus Pai, entregue em parceria com a Tec4u.",
+  },
+  {
+    slug: "loja-kings",
+    name: "Loja Kings",
+    website: "https://www.lojakings.com.br",
+    platform: "NuvemShop",
+    agencySlug: "tec4u",
+    image: "/projects/sites/loja-kings.png",
+    imageAlt: "Preview do site Loja Kings",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em NuvemShop para a Loja Kings, entregue em parceria com a Tec4u.",
+  },
+  {
+    slug: "ls-decor",
+    name: "LS Decor",
+    website: "https://lsdecor.com.br",
+    platform: "Uappi",
+    agencySlug: "tec4u",
+    image: "/projects/sites/ls-decor.png",
+    imageAlt: "Preview do site LS Decor",
+    kind: "store",
+    featuredOnHome: true,
+    summary:
+      "Loja publicada em Uappi para a LS Decor, entregue em parceria com a Tec4u.",
+  },
+  {
+    slug: "talgui",
+    name: "Talgui",
+    website: "https://talgui.com.br",
+    platform: "NuvemShop",
+    agencySlug: "tec4u",
+    image: "/projects/sites/talgui.png",
+    imageAlt: "Preview do site Talgui",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em NuvemShop para a Talgui, entregue em parceria com a Tec4u.",
+  },
+  {
+    slug: "gbw-rio",
+    name: "GBW Rio",
+    website: "https://gbwrio.com.br",
+    platform: "NuvemShop",
+    agencySlug: "tec4u",
+    image: "/projects/sites/gbw-rio.png",
+    imageAlt: "Preview do site GBW Rio",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em NuvemShop para a GBW Rio, entregue em parceria com a Tec4u.",
   },
 ];
 
+export const featuredProjects = projects.filter((project) => project.featuredOnHome);
+
 export const contactData = {
-  // Chamada mais direta para quem precisa de apoio especializado no front-end
   title: "Precisa de apoio no front-end do seu e-commerce?",
-  // Esclarece os tipos de serviço oferecidos e reforça a forma de atuação
   description:
     "Posso atuar em sustentação, implementação, replatform ou melhorias pontuais, entrando no projeto com visão técnica, cuidado visual e foco em execução.",
-  // Incentiva o contato pelo canal mais rápido e oferece alternativa
   note:
     "O caminho mais rápido é pelo WhatsApp. Se preferir, também pode me chamar por e-mail.",
 };
 
-export function getPartnerBySlug(slug: string) {
-  return partners.find((partner) => partner.slug === slug);
+export function getAgencyBySlug(slug: string) {
+  return agencies.find((agency) => agency.slug === slug);
 }
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
+}
+
+export function getProjectsByAgencySlug(agencySlug: string) {
+  return projects.filter((project) => project.agencySlug === agencySlug);
+}
+
+export function getRelatedProjects(project: Project, limit = 3) {
+  const sameAgency = projects.filter(
+    (item) => item.slug !== project.slug && item.agencySlug === project.agencySlug,
+  );
+  const samePlatform = projects.filter(
+    (item) =>
+      item.slug !== project.slug &&
+      item.agencySlug !== project.agencySlug &&
+      item.platform === project.platform,
+  );
+
+  return [...sameAgency, ...samePlatform].slice(0, limit);
+}
+
+export function getHostnameLabel(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
+export function getKindLabel(kind: ProjectKind) {
+  return kind === "landing-page" ? "Landing Page" : "Loja";
 }

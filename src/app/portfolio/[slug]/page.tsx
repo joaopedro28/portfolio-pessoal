@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProjectCard } from "@/components/project-card";
 import { SiteHeader } from "@/components/site-header";
 import {
-  getPartnerBySlug,
+  getAgencyBySlug,
+  getHostnameLabel,
+  getKindLabel,
   getProjectBySlug,
+  getRelatedProjects,
   projects,
   siteConfig,
 } from "@/data/portfolio";
@@ -55,13 +59,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  const partner = getPartnerBySlug(project.partnerSlug);
+  const agency = getAgencyBySlug(project.agencySlug);
+  const relatedProjects = getRelatedProjects(project, 3);
   const projectSchema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.name,
     description: project.summary,
-    url: `${siteConfig.siteUrl}/portfolio/${project.slug}`,
+    url: project.website,
     creator: {
       "@type": "Person",
       name: siteConfig.name,
@@ -82,10 +87,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             <section className={styles.detailHero}>
-              <span className={styles.detailEyebrow}>{project.segment}</span>
+              <span className={styles.detailEyebrow}>{project.platform}</span>
               <h1 className={styles.detailTitle}>{project.name}</h1>
               <p className={styles.detailLead}>{project.summary}</p>
-              <p className={styles.detailSummary}>{project.overview}</p>
+              <p className={styles.detailSummary}>
+                {agency
+                  ? `Projeto entregue em parceria com ${agency.name} e publicado em ${getHostnameLabel(project.website)}.`
+                  : `Projeto publicado em ${getHostnameLabel(project.website)}.`}
+              </p>
 
               <div className={styles.detailMedia}>
                 <Image
@@ -101,63 +110,76 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
             <section className={styles.detailGrid}>
               <article className={styles.detailPanel}>
-                <h2 className={styles.detailPanelTitle}>
-                  Impacto e direcionamento
-                </h2>
-                <ul className={styles.detailList}>
-                  {project.impact.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <h2 className={styles.detailPanelTitle}>Ficha do projeto</h2>
+                <dl className={styles.detailFactList}>
+                  <div className={styles.detailFactItem}>
+                    <dt className={styles.detailFactTerm}>Tipo</dt>
+                    <dd className={styles.detailFactValue}>
+                      {getKindLabel(project.kind)}
+                    </dd>
+                  </div>
+                  <div className={styles.detailFactItem}>
+                    <dt className={styles.detailFactTerm}>Plataforma</dt>
+                    <dd className={styles.detailFactValue}>{project.platform}</dd>
+                  </div>
+                  <div className={styles.detailFactItem}>
+                    <dt className={styles.detailFactTerm}>Site publicado</dt>
+                    <dd className={styles.detailFactValue}>
+                      {getHostnameLabel(project.website)}
+                    </dd>
+                  </div>
+                  <div className={styles.detailFactItem}>
+                    <dt className={styles.detailFactTerm}>Agência</dt>
+                    <dd className={styles.detailFactValue}>
+                      {agency ? agency.name : "Não informada"}
+                    </dd>
+                  </div>
+                </dl>
               </article>
 
               <aside className={styles.detailPanel}>
-                <h2 className={styles.detailPanelTitle}>Entregáveis</h2>
-                <ul className={styles.detailList}>
-                  {project.deliverables.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </aside>
-            </section>
-
-            <section className={styles.detailGrid}>
-              <article className={styles.detailPanel}>
-                <h2 className={styles.detailPanelTitle}>Stack utilizada</h2>
-                <div className={styles.detailPillGrid}>
-                  {project.stack.map((item) => (
-                    <span key={item} className={styles.detailPill}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </article>
-
-              <aside className={styles.detailPanel}>
-                <h2 className={styles.detailPanelTitle}>Parceria relacionada</h2>
+                <h2 className={styles.detailPanelTitle}>Ações</h2>
                 <p className={styles.detailSummary}>
-                  {partner ? partner.summary : "Detalhes da parceria indisponíveis."}
+                  A ficha leva para o site publicado e também para a agência
+                  parceira relacionada quando houver contexto compartilhado.
                 </p>
-                {partner ? (
-                  <div className={styles.detailActions}>
+                <div className={styles.detailActions}>
+                  <a
+                    href={project.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.buttonPrimary}
+                  >
+                    Abrir projeto ao vivo
+                  </a>
+                  {agency ? (
                     <Link
-                      href={`/parcerias/${partner.slug}`}
+                      href={`/parcerias/${agency.slug}`}
                       className={styles.buttonSecondary}
                     >
-                      Ver parceria
+                      Ver agência parceira
                     </Link>
-                    <a
-                      href={siteConfig.whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.buttonPrimary}
-                    >
-                      Conversar sobre um projeto
-                    </a>
-                  </div>
-                ) : null}
+                  ) : null}
+                </div>
               </aside>
             </section>
+
+            {relatedProjects.length ? (
+              <section className={styles.detailRelatedSection}>
+                <div className={styles.detailSectionHeading}>
+                  <span className={styles.sectionEyebrow}>Relacionados</span>
+                  <h2 className={styles.detailSectionTitle}>
+                    Mais projetos para continuar a navegação
+                  </h2>
+                </div>
+
+                <div className={styles.projectsGrid}>
+                  {relatedProjects.map((item) => (
+                    <ProjectCard key={item.slug} project={item} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
           </div>
         </section>
       </main>
