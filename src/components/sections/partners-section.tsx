@@ -41,9 +41,6 @@ export function AgenciesSection() {
 
                 <div className={styles.partnerCopy}>
                   <div className={styles.partnerMetaRow}>
-                    {/* <span className={styles.partnerRole}>
-                      {agency.projectCount} projetos
-                    </span> */}
                     <span className={styles.partnerMetaDot} />
                     <span className={styles.partnerHost}>
                       {getHostnameLabel(agency.website)}

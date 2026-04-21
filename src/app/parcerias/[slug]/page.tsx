@@ -84,8 +84,8 @@ export default async function PartnerPage({ params }: PartnerPageProps) {
               <h1 className={styles.detailTitle}>{agency.name}</h1>
               <p className={styles.detailLead}>{agency.summary}</p>
               <p className={styles.detailSummary}>
-                {agency.projectCount} projetos desta seleção foram publicados com
-                esta parceria, distribuídos entre {agency.platforms.join(", ")}.
+                Esta parceria aparece nesta vitrine com entregas distribuídas
+                entre {agency.platforms.join(", ")}.
               </p>
 
               <div className={styles.agencyHeroPanel}>
@@ -109,9 +109,9 @@ export default async function PartnerPage({ params }: PartnerPageProps) {
                       </dd>
                     </div>
                     <div className={styles.detailFactItem}>
-                      <dt className={styles.detailFactTerm}>Projetos</dt>
+                      <dt className={styles.detailFactTerm}>Atuação</dt>
                       <dd className={styles.detailFactValue}>
-                        {agency.projectCount} nesta vitrine
+                        Implementação e entrega front-end freelancer
                       </dd>
                     </div>
                     <div className={styles.detailFactItem}>

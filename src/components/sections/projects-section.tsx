@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { AnimatedReveal } from "@/components/animated-reveal";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -13,6 +14,7 @@ type ProjectsSectionProps = {
   items?: Project[];
   title?: string;
   description?: string;
+  toolbar?: ReactNode;
 };
 
 export function ProjectsSection({
@@ -20,6 +22,7 @@ export function ProjectsSection({
   items,
   title,
   description,
+  toolbar,
 }: ProjectsSectionProps) {
   const projectItems =
     items ?? (mode === "home" ? featuredProjects : projects);
@@ -32,14 +35,30 @@ export function ProjectsSection({
     >
       <div className={styles.container}>
         {showHeading ? (
-          <SectionHeading
-            eyebrow="Projetos"
-            title={title ?? "Projetos publicados em operação real"}
-            description={
-              description ??
-              "Recorte de lojas e landing pages entregues para marcas atendidas em parceria com agências de e-commerce."
-            }
-          />
+          toolbar ? (
+            <div className={styles.projectsSectionHeader}>
+              <SectionHeading
+                eyebrow="Projetos"
+                title={title ?? "Projetos publicados em operação real"}
+                description={
+                  description ??
+                  "Recorte de lojas e landing pages entregues para marcas atendidas em parceria com agências de e-commerce."
+                }
+                className={styles.sectionHeadingFlush}
+              />
+
+              <div className={styles.projectsSectionToolbar}>{toolbar}</div>
+            </div>
+          ) : (
+            <SectionHeading
+              eyebrow="Projetos"
+              title={title ?? "Projetos publicados em operação real"}
+              description={
+                description ??
+                "Recorte de lojas e landing pages entregues para marcas atendidas em parceria com agências de e-commerce."
+              }
+            />
+          )
         ) : null}
 
         <div className={styles.projectsGrid}>

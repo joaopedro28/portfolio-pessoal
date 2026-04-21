@@ -85,6 +85,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.55rem;
   min-height: 2.75rem;
   padding: 0.7rem 1rem;
   border: 1px solid rgba(113, 149, 240, 0.22);
@@ -102,6 +103,22 @@
   transform: translateY(-1px);
   border-color: rgba(113, 149, 240, 0.42);
   background: rgba(27, 42, 76, 0.88);
+}
+
+.siteHeaderActionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.siteHeaderActionIcon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.mobileWhatsAppButton {
+  display: none;
 }
 
 .heroSection {
@@ -357,11 +374,8 @@
   gap: 0.85rem;
   width: min(18.75rem, 58%);
   padding: 2rem 1.7rem;
-  border: 1px solid rgba(147, 164, 200, 0.14);
   border-radius: 28px;
-  background: rgba(11, 18, 31, 0.74);
   text-align: center;
-  box-shadow: var(--shadow-lg);
 }
 
 .visualOverline {
@@ -431,6 +445,10 @@
   gap: 0.7rem;
   max-width: 46rem;
   margin-bottom: 2.35rem;
+}
+
+.sectionHeadingFlush {
+  margin-bottom: 0;
 }
 
 .headingCenter {
@@ -565,7 +583,7 @@
 
 .partnerLogoBox {
   display: grid;
-  min-height: 5.6rem;
+  height: 6rem;
   place-items: center;
   border-radius: 20px;
   border: 1px solid rgba(147, 164, 200, 0.08);
@@ -573,15 +591,18 @@
 }
 
 .partnerLogo {
-  width: 100%;
+  width: 80%;
   height: auto;
-  filter: grayscale(1) brightness(1.05);
-  transition: filter 180ms ease;
+  object-fit: contain;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 320ms ease;
+  will-change: transform;
 }
 
 .partnerLink:hover .partnerLogo,
 .partnerLink:focus-visible .partnerLogo {
-  filter: grayscale(0.2) brightness(1.1);
+  transform: scale(1.125);
 }
 
 .partnerCopy {
@@ -730,6 +751,80 @@
   font-size: 0.96rem;
   line-height: 1.72;
   text-align: center;
+}
+
+.projectsSectionHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: end;
+  margin-bottom: 2.35rem;
+}
+
+.projectsSectionToolbar {
+  width: min(260px, 100%);
+  justify-self: end;
+}
+
+.projectsFilterField {
+  display: grid;
+  gap: 0.55rem;
+  width: min(240px, 100%);
+}
+
+.projectsFilterLabel {
+  color: #adc0ee;
+  font-size: 0.74rem;
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.projectsFilterControl {
+  position: relative;
+}
+
+.projectsFilterControl::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 1.5px solid rgba(220, 230, 255, 0.82);
+  border-bottom: 1.5px solid rgba(220, 230, 255, 0.82);
+  pointer-events: none;
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.projectsFilterSelect {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.82rem 2.6rem 0.82rem 1rem;
+  border: 1px solid rgba(147, 164, 200, 0.16);
+  border-radius: 18px;
+  background: rgba(10, 16, 28, 0.84);
+  color: var(--foreground-strong);
+  font-size: 1rem;
+  line-height: 1.4;
+  appearance: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.projectsFilterSelect:hover,
+.projectsFilterSelect:focus-visible {
+  border-color: rgba(113, 149, 240, 0.3);
+  background: rgba(11, 18, 31, 0.94);
+  box-shadow: var(--shadow-md);
+  outline: none;
+}
+
+.projectsFilterSelect:disabled {
+  cursor: wait;
+  opacity: 0.72;
 }
 
 .projectsSection {
@@ -1056,6 +1151,78 @@
   gap: 1.2rem;
 }
 
+.detailAgencyHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.15rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(113, 149, 240, 0.22);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(49, 86, 182, 0.24), transparent 38%),
+    linear-gradient(180deg, rgba(12, 19, 34, 0.98), rgba(6, 10, 18, 0.96));
+  box-shadow: var(--shadow-lg);
+}
+
+.detailAgencyLogoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(13rem, 100%);
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(147, 164, 200, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.detailAgencyLogoLink:hover,
+.detailAgencyLogoLink:focus-visible {
+  border-color: rgba(173, 192, 238, 0.34);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.detailAgencyLogo {
+  width: min(10.5rem, 100%);
+  height: auto;
+  max-height: 2.8rem;
+  object-fit: contain;
+}
+
+.detailAgencyHeaderCopy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.detailAgencyHeaderLabel,
+.detailAgencyNoticeLabel {
+  color: #adc0ee;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.detailAgencyHeaderName {
+  color: var(--foreground-strong);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  transition: color 180ms ease;
+}
+
+.detailAgencyHeaderName:hover,
+.detailAgencyHeaderName:focus-visible {
+  color: #dce6ff;
+}
+
 .detailEyebrow {
   color: #adc0ee;
   font-family: var(--font-geist-mono), monospace;
@@ -1084,6 +1251,22 @@
   line-height: 1.72;
 }
 
+.detailAgencyNotice {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 46rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(113, 149, 240, 0.18);
+  border-radius: 22px;
+  background: rgba(12, 18, 32, 0.74);
+}
+
+.detailAgencyNoticeText {
+  color: var(--foreground-strong);
+  font-size: 0.95rem;
+  line-height: 1.72;
+}
+
 .detailMedia {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -1107,7 +1290,10 @@
 }
 
 .detailPanel {
-  display: grid;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   gap: 1rem;
   padding: 1.5rem;
   border: 1px solid var(--line);
@@ -1140,9 +1326,28 @@
 .detailFactItem {
   display: grid;
   gap: 0.3rem;
+  max-width: 200px;
   padding-top: 0.85rem;
   border-top: 1px solid rgba(147, 164, 200, 0.14);
 }
+
+@media screen and (min-width: 900px) {
+  .detailFactList {
+    display: flex;
+    flex-direction: row;
+    gap: 2.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .detailFactItem {
+    border-top: 0;
+    padding-top: 0;
+    gap: 20px;
+  }
+}
+
 
 .detailFactItem:first-child {
   padding-top: 0;
@@ -1234,7 +1439,8 @@
   .portfolioCtaPanel,
   .contactPanel,
   .detailGrid,
-  .agencyHeroPanel {
+  .agencyHeroPanel,
+  .projectsSectionHeader {
     grid-template-columns: 1fr;
   }
 
@@ -1254,6 +1460,10 @@
   .partnerGrid,
   .projectsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projectsSectionToolbar {
+    justify-self: start;
   }
 }
 
@@ -1282,10 +1492,6 @@
 
   .heroGrid {
     gap: 3.2rem;
-  }
-
-  .heroSpecialties {
-    grid-template-columns: 1fr;
   }
 
   .heroVisualPlane {
@@ -1339,11 +1545,30 @@
     grid-template-columns: 1fr;
   }
 
+  .projectsSectionHeader {
+    gap: 1.1rem;
+  }
+
+  .projectsSectionToolbar,
+  .projectsFilterField {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .projectTop,
   .footerInner,
   .detailActions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .detailAgencyHeader,
+  .detailAgencyLogoLink {
+    width: 100%;
+  }
+
+  .detailAgencyLogoLink {
+    justify-content: flex-start;
   }
 
   .projectActions {
@@ -1357,6 +1582,43 @@
   .buttonGhost,
   .siteHeaderAction {
     width: 100%;
+  }
+
+  .siteHeaderAction {
+    display: none;
+  }
+
+  .mobileWhatsAppButton {
+    position: fixed;
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    z-index: 48;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 1px solid rgba(37, 211, 102, 0.28);
+    border-radius: 999px;
+    background: linear-gradient(180deg, #2bd86f 0%, #1faa53 100%);
+    color: #ffffff;
+    box-shadow: 0 20px 44px rgba(3, 12, 8, 0.32);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      filter 180ms ease;
+  }
+
+  .mobileWhatsAppButton:hover,
+  .mobileWhatsAppButton:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 24px 50px rgba(3, 12, 8, 0.36);
+    filter: brightness(1.03);
+  }
+
+  .mobileWhatsAppButton .siteHeaderActionIcon svg {
+    width: 1.35rem;
+    height: 1.35rem;
   }
 
   .heroVisualPlane {
@@ -1381,7 +1643,7 @@
   }
 
   .visualCaption {
-    font-size: 0.88rem;
+    font-size: 11px;
   }
 
   .visualOrbitItem[data-orbit="0"] {
@@ -1426,7 +1688,18 @@
   .partnerLink:hover,
   .partnerLink:focus-visible,
   .siteHeaderAction:hover,
-  .siteHeaderAction:focus-visible {
+  .siteHeaderAction:focus-visible,
+  .mobileWhatsAppButton:hover,
+  .mobileWhatsAppButton:focus-visible {
+    transform: none;
+  }
+
+  .partnerLogo {
+    transition: none;
+  }
+
+  .partnerLink:hover .partnerLogo,
+  .partnerLink:focus-visible .partnerLogo {
     transform: none;
   }
 

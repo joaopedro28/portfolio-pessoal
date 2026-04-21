@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
+import { PlatformFilter } from "@/components/platform-filter";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { SiteHeader } from "@/components/site-header";
-import { projects, siteConfig } from "@/data/portfolio";
+import {
+  getPlatformBySlug,
+  getProjectsByPlatform,
+  platforms,
+  projects,
+  siteConfig,
+} from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
+
+type PortfolioPageProps = {
+  searchParams?: Promise<{
+    platform?: string | string[];
+  }>;
+};
 
 export const metadata: Metadata = {
   title: "Portfólio",
@@ -14,24 +27,44 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Portfólio | João Pedro",
     description:
-      "Lojas e landing pages desenvolvidas para operações reais em Olist, WAKE, Shopify, NuvemShop e Uappi.",
+      "Lojas e landing pages desenvolvidas para operações reais em Olist, Wake, Shopify, NuvemShop e Uappi.",
     url: "/portfolio",
   },
   twitter: {
     title: "Portfólio | João Pedro",
     description:
-      "Lojas e landing pages desenvolvidas para operações reais em Olist, WAKE, Shopify, NuvemShop e Uappi.",
+      "Lojas e landing pages desenvolvidas para operações reais em Olist, Wake, Shopify, NuvemShop e Uappi.",
   },
 };
 
-export default function PortfolioPage() {
+function getQueryValue(value?: string | string[]) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+export default async function PortfolioPage({
+  searchParams,
+}: PortfolioPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+  const selectedPlatformSlug = getQueryValue(resolvedSearchParams.platform);
+  const activePlatform = selectedPlatformSlug
+    ? getPlatformBySlug(selectedPlatformSlug)
+    : undefined;
+  const filteredProjects = activePlatform
+    ? getProjectsByPlatform(activePlatform.name)
+    : projects;
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Portfólio de João Pedro",
-    url: `${siteConfig.siteUrl}/portfolio`,
-    description:
-      "Página dedicada aos projetos desenvolvidos por João Pedro para operações de e-commerce.",
+    name: activePlatform
+      ? `Portfólio em ${activePlatform.name} de João Pedro`
+      : "Portfólio de João Pedro",
+    url: activePlatform
+      ? `${siteConfig.siteUrl}/portfolio?platform=${activePlatform.slug}`
+      : `${siteConfig.siteUrl}/portfolio`,
+    description: activePlatform
+      ? `Página dedicada aos projetos desenvolvidos por João Pedro em ${activePlatform.name}.`
+      : "Página dedicada aos projetos desenvolvidos por João Pedro para operações de e-commerce.",
   };
 
   return (
@@ -44,12 +77,10 @@ export default function PortfolioPage() {
             <div className={styles.portfolioHeroInner}>
               <span className={styles.portfolioEyebrow}>Portfólio</span>
               <h1 className={styles.portfolioHeroTitle}>
-                Projetos desenvolvidos para marcas e agências que precisaram tirar o front‑end do papel com qualidade e ritmo.
+                Projetos desenvolvidos para marcas e agências que precisaram tirar o front-end do papel com qualidade e ritmo.
               </h1>
               <p className={styles.portfolioHeroDescription}>
-                A listagem abaixo organiza lojas e landing pages com base no
-                site publicado, na plataforma usada e na agência com quem a
-                entrega foi construída.
+                A listagem abaixo reúne lojas e landing pages publicadas em diferentes plataformas de e-commerce.
               </p>
             </div>
           </div>
@@ -57,8 +88,15 @@ export default function PortfolioPage() {
 
         <ProjectsSection
           mode="portfolio"
-          title={`Todos os ${projects.length} projetos desta seleção`}
-          description="Cada card leva para uma ficha factual com preview do site, plataforma, agência relacionada e acesso ao projeto publicado."
+          items={filteredProjects}
+          title="Projetos publicados em operação real"
+          description="Selecione uma plataforma para visualizar os projetos desta vitrine."
+          toolbar={
+            <PlatformFilter
+              options={platforms}
+              selectedPlatformSlug={activePlatform?.slug}
+            />
+          }
         />
       </main>
       <script

@@ -5,6 +5,7 @@ type SectionHeadingProps = {
   title: string;
   description: string;
   align?: "left" | "center";
+  className?: string;
 };
 
 export function SectionHeading({
@@ -12,12 +13,14 @@ export function SectionHeading({
   title,
   description,
   align = "left",
+  className,
 }: SectionHeadingProps) {
   return (
     <div
       className={[
         styles.sectionHeading,
         align === "center" ? styles.headingCenter : styles.headingLeft,
+        className,
       ].join(" ")}
     >
       <span className={styles.sectionEyebrow}>{eyebrow}</span>

@@ -6,6 +6,8 @@ import { ProjectCard } from "@/components/project-card";
 import { SiteHeader } from "@/components/site-header";
 import {
   getAgencyBySlug,
+  getPlatformByName,
+  getProjectAgencyCreditText,
   getHostnameLabel,
   getKindLabel,
   getProjectBySlug,
@@ -60,6 +62,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const agency = getAgencyBySlug(project.agencySlug);
+  const platform = getPlatformByName(project.platform);
+  const agencyCreditText = getProjectAgencyCreditText(project, agency);
   const relatedProjects = getRelatedProjects(project, 3);
   const projectSchema = {
     "@context": "https://schema.org",
@@ -87,6 +91,36 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             <section className={styles.detailHero}>
+              {agency ? (
+                <div className={styles.detailAgencyHeader}>
+                  <Link
+                    href={`/parcerias/${agency.slug}`}
+                    className={styles.detailAgencyLogoLink}
+                    aria-label={`Ver detalhes da agência ${agency.name}`}
+                  >
+                    <Image
+                      src={agency.logo}
+                      alt={agency.logoAlt}
+                      width={240}
+                      height={96}
+                      className={styles.detailAgencyLogo}
+                    />
+                  </Link>
+
+                  <div className={styles.detailAgencyHeaderCopy}>
+                    <span className={styles.detailAgencyHeaderLabel}>
+                      Projeto da agência
+                    </span>
+                    <Link
+                      href={`/parcerias/${agency.slug}`}
+                      className={styles.detailAgencyHeaderName}
+                    >
+                      {agency.name}
+                    </Link>
+                  </div>
+                </div>
+              ) : null}
+
               <span className={styles.detailEyebrow}>{project.platform}</span>
               <h1 className={styles.detailTitle}>{project.name}</h1>
               <p className={styles.detailLead}>{project.summary}</p>
@@ -95,6 +129,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   ? `Projeto entregue em parceria com ${agency.name} e publicado em ${getHostnameLabel(project.website)}.`
                   : `Projeto publicado em ${getHostnameLabel(project.website)}.`}
               </p>
+              <div className={styles.detailAgencyNotice}>
+                <span className={styles.detailAgencyNoticeLabel}>
+                  Titularidade e atuação
+                </span>
+                <p className={styles.detailAgencyNoticeText}>{agencyCreditText}</p>
+              </div>
 
               <div className={styles.detailMedia}>
                 <Image
@@ -140,8 +180,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <aside className={styles.detailPanel}>
                 <h2 className={styles.detailPanelTitle}>Ações</h2>
                 <p className={styles.detailSummary}>
-                  A ficha leva para o site publicado e também para a agência
-                  parceira relacionada quando houver contexto compartilhado.
+                  A ficha leva para o site publicado e também permite continuar
+                  a navegação pela mesma plataforma ou pela agência parceira.
                 </p>
                 <div className={styles.detailActions}>
                   <a
@@ -152,6 +192,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   >
                     Abrir projeto ao vivo
                   </a>
+                  {platform ? (
+                    <Link
+                      href={`/portfolio?platform=${platform.slug}`}
+                      className={styles.buttonGhost}
+                    >
+                      Ver mais em {platform.name}
+                    </Link>
+                  ) : null}
                   {agency ? (
                     <Link
                       href={`/parcerias/${agency.slug}`}

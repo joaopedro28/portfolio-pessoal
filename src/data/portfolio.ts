@@ -19,7 +19,6 @@ export type Agency = {
   logoAlt: string;
   summary: string;
   platforms: string[];
-  projectCount: number;
 };
 
 export type ProjectKind = "store" | "landing-page";
@@ -30,6 +29,7 @@ export type Project = {
   website: string;
   platform: string;
   agencySlug: string;
+  agencyCreditText?: string;
   image: string;
   imageAlt: string;
   kind: ProjectKind;
@@ -43,11 +43,27 @@ export type HeroOrbitItem = {
   angle?: number;
 };
 
+export type PlatformSlug =
+  | "olist"
+  | "wake"
+  | "shopify"
+  | "nuvemshop"
+  | "uappi";
+
+export type Platform = {
+  slug: PlatformSlug;
+  name: string;
+  description: string;
+};
+
+export type PlatformSummary = Platform & {
+};
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-joao-pedro.vercel.app";
 const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5555999536991";
 const contactEmail =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "joao.pedro@rockbase.com.br";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "joao.pedro.28.rocha@gmail.com";
 
 const whatsappMessage =
   "Olá, João Pedro! Vim pelo seu portfólio e gostaria de conversar sobre um projeto de e-commerce.";
@@ -64,7 +80,6 @@ export const siteConfig = {
 
 export const navItems: NavItem[] = [
   { href: "/#agencias", label: "Agências" },
-  { href: "/#projetos", label: "Projetos" },
   { href: "/portfolio", label: "Portfólio" },
   { href: "/#contato", label: "Contato" },
 ];
@@ -77,7 +92,7 @@ export const heroData = {
     "Atuo há 8 anos desenvolvendo, refinando e publicando experiências de compra para marcas e agências que precisam de ritmo, clareza técnica e cuidado visual. Entro bem em sustentação, implementação, replatform e melhorias contínuas, tirando projetos do layout para produção com consistência.",
   specialties: [
     "Olist",
-    "WAKE",
+    "Wake",
     "Shopify",
     "NuvemShop",
     "Uappi",
@@ -89,7 +104,7 @@ export const heroData = {
 
 export const heroOrbitItems: HeroOrbitItem[] = [
   { label: "Olist", orbit: 2, angle: 4 },
-  { label: "WAKE", orbit: 2, angle: 42 },
+  { label: "Wake", orbit: 2, angle: 42 },
   { label: "Shopify", orbit: 2, angle: 82 },
   { label: "NuvemShop", orbit: 2, angle: 121 },
   { label: "Uappi", orbit: 2, angle: 160 },
@@ -97,6 +112,39 @@ export const heroOrbitItems: HeroOrbitItem[] = [
   { label: "Performance", orbit: 2, angle: 241 },
   { label: "Landing Pages", orbit: 2, angle: 281 },
   { label: "Sustentação", orbit: 2, angle: 321 },
+];
+
+const platformDefinitions: Platform[] = [
+  {
+    slug: "olist",
+    name: "Olist",
+    description:
+      "Projetos publicados para operações que pedem sustentação contínua, catálogo vivo e frente estável em produção.",
+  },
+  {
+    slug: "wake",
+    name: "Wake",
+    description:
+      "Implementações para operações mais estruturadas, com foco em clareza técnica e entrega confiável.",
+  },
+  {
+    slug: "shopify",
+    name: "Shopify",
+    description:
+      "Landing pages e frentes de campanha orientadas a conversão, velocidade de publicação e autonomia do time.",
+  },
+  {
+    slug: "nuvemshop",
+    name: "NuvemShop",
+    description:
+      "Lojas publicadas para marcas em crescimento, com ritmo ágil de entrega e ajustes contínuos de front-end.",
+  },
+  {
+    slug: "uappi",
+    name: "Uappi",
+    description:
+      "Projetos em ambiente mais customizado, com foco em experiência, performance e implementação consistente.",
+  },
 ];
 
 export const metricItems: Metric[] = [
@@ -108,7 +156,7 @@ export const metricItems: Metric[] = [
       "Atuação em sustentação, implementação, redesign e evolução contínua de lojas virtuais.",
   },
   {
-    value: 22,
+    value: 50,
     label: "projetos publicados nesta seleção",
     caption:
       "Recorte real de lojas e landing pages entregues em parceria com agências de e-commerce.",
@@ -123,7 +171,7 @@ export const metricItems: Metric[] = [
     value: 5,
     label: "plataformas representadas",
     caption:
-      "Projetos publicados em Olist, WAKE, Shopify, NuvemShop e Uappi.",
+      "Projetos publicados em Olist, Wake, Shopify, NuvemShop e Uappi.",
   },
 ];
 
@@ -136,8 +184,7 @@ export const agencies: Agency[] = [
     logoAlt: "Logo da Auaha",
     summary:
       "Agência com foco em marketing digital e e-commerce, atuando na construção e evolução de operações digitais.",
-    platforms: ["Olist", "WAKE", "Shopify"],
-    projectCount: 5,
+    platforms: ["Olist", "Wake", "Shopify"],
   },
   {
     slug: "tec4u",
@@ -148,7 +195,6 @@ export const agencies: Agency[] = [
     summary:
       "Agência 360º especializada em e-commerce, marketing digital e desenvolvimento web para marcas em crescimento.",
     platforms: ["NuvemShop", "Uappi"],
-    projectCount: 5,
   },
   {
     slug: "orbit",
@@ -159,7 +205,6 @@ export const agencies: Agency[] = [
     summary:
       "Agência parceira voltada a mídia e performance para operações de e-commerce, aqui representada com identidade local estável.",
     platforms: ["Olist"],
-    projectCount: 1,
   },
   {
     slug: "mahara",
@@ -170,7 +215,6 @@ export const agencies: Agency[] = [
     summary:
       "Agência com foco em estratégia, branding e performance digital para marcas que precisam crescer com direção clara.",
     platforms: ["Olist"],
-    projectCount: 6,
   },
   {
     slug: "tec3ecommerce",
@@ -181,7 +225,6 @@ export const agencies: Agency[] = [
     summary:
       "Operação digital focada em implementação e evolução de lojas virtuais, com repertório forte em Olist e NuvemShop.",
     platforms: ["Olist", "NuvemShop"],
-    projectCount: 5,
   },
 ];
 
@@ -229,14 +272,14 @@ export const projects: Project[] = [
     slug: "indauto",
     name: "Indauto",
     website: "https://indauto.com.br",
-    platform: "WAKE",
+    platform: "Wake",
     agencySlug: "auaha",
     image: "/projects/sites/indauto.png",
     imageAlt: "Preview do site Indauto",
     kind: "store",
     featuredOnHome: false,
     summary:
-      "Operação publicada em WAKE para a Indauto, entregue em parceria com a Auaha.",
+      "Operação publicada em Wake para a Indauto, entregue em parceria com a Auaha.",
   },
   {
     slug: "let-me-be-sem-pausa",
@@ -474,6 +517,12 @@ export const projects: Project[] = [
   },
 ];
 
+export const platforms: PlatformSummary[] = platformDefinitions.map((platform) => {
+  return {
+    ...platform,
+  };
+});
+
 export const featuredProjects = projects.filter((project) => project.featuredOnHome);
 
 export const contactData = {
@@ -492,8 +541,50 @@ export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
 
+export function getPlatformBySlug(slug: string) {
+  return platforms.find((platform) => platform.slug === slug);
+}
+
+export function getPlatformByName(name: string) {
+  return platforms.find((platform) => platform.name === name);
+}
+
+export function getProjectAgencyCreditText(
+  project: Project,
+  agency?: Agency,
+  overrideText?: string,
+) {
+  if (overrideText) {
+    return overrideText;
+  }
+
+  if (project.agencyCreditText) {
+    return project.agencyCreditText;
+  }
+
+  if (agency) {
+    return `Este projeto pertence à ${agency.name}. Minha atuação aconteceu exclusivamente como desenvolvedor freelancer, com foco na implementação e entrega técnica do projeto.`;
+  }
+
+  return "Minha atuação aconteceu exclusivamente como desenvolvedor freelancer, com foco na implementação e entrega técnica do projeto.";
+}
+
 export function getProjectsByAgencySlug(agencySlug: string) {
   return projects.filter((project) => project.agencySlug === agencySlug);
+}
+
+export function getProjectsByPlatform(platformName: string) {
+  return projects.filter((project) => project.platform === platformName);
+}
+
+export function getProjectsByPlatformSlug(slug: string) {
+  const platform = getPlatformBySlug(slug);
+
+  if (!platform) {
+    return [];
+  }
+
+  return getProjectsByPlatform(platform.name);
 }
 
 export function getRelatedProjects(project: Project, limit = 3) {
