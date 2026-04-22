@@ -177,36 +177,6 @@ export const metricItems: Metric[] = [
 
 export const agencies: Agency[] = [
   {
-    slug: "auaha",
-    name: "Auaha",
-    website: "https://auaha.com.br",
-    logo: "/agencies/auaha.svg",
-    logoAlt: "Logo da Auaha",
-    summary:
-      "Agência com foco em marketing digital e e-commerce, atuando na construção e evolução de operações digitais.",
-    platforms: ["Olist", "Wake", "Shopify"],
-  },
-  {
-    slug: "TEC4U",
-    name: "TEC4U",
-    website: "https://www.tec4udigital.com",
-    logo: "/agencies/tec4u.svg",
-    logoAlt: "Logo da TEC4U",
-    summary:
-      "Agência 360º especializada em e-commerce, marketing digital e desenvolvimento web para marcas em crescimento.",
-    platforms: ["NuvemShop", "Uappi"],
-  },
-  {
-    slug: "orbit",
-    name: "Orbit",
-    website: "https://orbitads.com.br/",
-    logo: "/agencies/orbitads.png",
-    logoAlt: "Marca da Orbit",
-    summary:
-      "Agência parceira voltada a mídia e performance para operações de e-commerce, aqui representada com identidade local estável.",
-    platforms: ["Olist"],
-  },
-  {
     slug: "mahara",
     name: "Mahara",
     website: "https://mahara.marketing",
@@ -226,6 +196,36 @@ export const agencies: Agency[] = [
       "Operação digital focada em implementação e evolução de lojas virtuais, com repertório forte em Olist e NuvemShop.",
     platforms: ["Olist", "NuvemShop"],
   },
+  {
+    slug: "auaha",
+    name: "Auaha",
+    website: "https://auaha.com.br",
+    logo: "/agencies/auaha.svg",
+    logoAlt: "Logo da Auaha",
+    summary:
+      "Agência com foco em marketing digital e e-commerce, atuando na construção e evolução de operações digitais.",
+    platforms: ["Olist", "Wake"],
+  },
+  {
+    slug: "TEC4U",
+    name: "TEC4U",
+    website: "https://www.tec4udigital.com",
+    logo: "/agencies/tec4u.svg",
+    logoAlt: "Logo da TEC4U",
+    summary:
+      "Agência 360º especializada em e-commerce, marketing digital e desenvolvimento web para marcas em crescimento.",
+    platforms: ["NuvemShop", "Uappi"],
+  },
+  {
+    slug: "orbit",
+    name: "Orbit",
+    website: "https://orbitads.com.br/",
+    logo: "/agencies/orbitads.png",
+    logoAlt: "Marca da Orbit",
+    summary:
+      "Agência parceira voltada a mídia e performance para operações de e-commerce, aqui representada com identidade local estável.",
+    platforms: ["Olist", "Shopify"],
+  }
 ];
 
 export const projects: Project[] = [
@@ -286,7 +286,7 @@ export const projects: Project[] = [
     name: "Let Me Be — Sem Pausa",
     website: "https://www.letmebe.com.br/pages/lp-sem-pausa",
     platform: "Shopify",
-    agencySlug: "auaha",
+    agencySlug: "orbit",
     image: "/projects/sites/let-me-be-sem-pausa.png",
     imageAlt: "Preview da landing page Sem Pausa da Let Me Be",
     kind: "landing-page",
