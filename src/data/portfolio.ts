@@ -190,7 +190,7 @@ export const agencies: Agency[] = [
     slug: "tec3ecommerce",
     name: "Tec3ecommerce",
     website: "https://tec3commerce.com.br",
-    logo: "/agencies/tec3commerce.png",
+    logo: "/agencies/tec3ecommerce.png",
     logoAlt: "Marca da Tec3ecommerce",
     summary:
       "Operação digital focada em implementação e evolução de lojas virtuais, com repertório forte em Olist e NuvemShop.",
