@@ -19,7 +19,8 @@ export function AnimatedReveal({
   threshold = 0.2,
 }: AnimatedRevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  const [canAnimate, setCanAnimate] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const node = ref.current;
@@ -28,39 +29,98 @@ export function AnimatedReveal({
       return;
     }
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const frame = window.requestAnimationFrame(() => setVisible(true));
+    let frame = 0;
+    const updateRevealState = (nextCanAnimate: boolean, nextVisible: boolean) => {
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+
+      frame = window.requestAnimationFrame(() => {
+        setCanAnimate(nextCanAnimate);
+        setVisible(nextVisible);
+      });
+    };
+
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      typeof window.IntersectionObserver !== "function"
+    ) {
+      updateRevealState(false, true);
       return () => window.cancelAnimationFrame(frame);
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
+    const rect = node.getBoundingClientRect();
+    const viewportHeight =
+      window.innerHeight || document.documentElement.clientHeight;
+    const viewportWidth =
+      window.innerWidth || document.documentElement.clientWidth;
+    const visibleHeight = Math.max(
+      0,
+      Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0),
+    );
+    const visibleWidth = Math.max(
+      0,
+      Math.min(rect.right, viewportWidth) - Math.max(rect.left, 0),
+    );
+    const visibleArea = visibleHeight * visibleWidth;
+    const totalArea = rect.height * rect.width;
+    const isVisibleOnMount =
+      totalArea > 0 && visibleArea / totalArea >= threshold;
 
-          if (once) {
-            observer.disconnect();
+    updateRevealState(true, isVisibleOnMount);
+
+    let observer: IntersectionObserver;
+    let fallback = 0;
+
+    try {
+      observer = new window.IntersectionObserver(
+        ([entry]) => {
+          window.clearTimeout(fallback);
+
+          if (entry.isIntersecting) {
+            setVisible(true);
+
+            if (once) {
+              observer.disconnect();
+            }
+
+            return;
           }
 
-          return;
-        }
+          if (!once) {
+            setVisible(false);
+          }
+        },
+        { threshold },
+      );
+    } catch {
+      updateRevealState(false, true);
+      return () => window.cancelAnimationFrame(frame);
+    }
 
-        if (!once) {
-          setVisible(false);
-        }
-      },
-      { threshold },
-    );
+    fallback = window.setTimeout(() => {
+      observer.disconnect();
+      updateRevealState(false, true);
+    }, 1200);
 
     observer.observe(node);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(fallback);
+    };
   }, [once, threshold]);
 
   return (
     <div
       ref={ref}
-      className={[styles.reveal, visible ? styles.visible : "", className]
+      className={[
+        styles.reveal,
+        canAnimate ? styles.animated : "",
+        visible ? styles.visible : "",
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
       style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
