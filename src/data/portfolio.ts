@@ -373,6 +373,19 @@ export const projects: Project[] = [
       "Loja publicada em Olist para a Use Ofélia, entregue em parceria com a Tec3ecommerce.",
   },
   {
+    slug: "4music",
+    name: "4Music",
+    website: "https://www.4music.com.br",
+    platform: "Olist",
+    agencySlug: "mahara",
+    image: "/projects/sites/4music.png",
+    imageAlt: "Preview do site 4Music",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a 4Music, entregue em parceria com a Mahara.",
+  },
+  {
     slug: "flexpop",
     name: "FlexPop",
     website: "https://www.flexpop.com.br",
