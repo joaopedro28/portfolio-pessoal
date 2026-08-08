@@ -269,6 +269,19 @@ export const projects: Project[] = [
       "Loja publicada em Olist para o atelier Karla Vivian, entregue em parceria com a Auaha.",
   },
   {
+    slug: "xploud-sport",
+    name: "Xploud Sport",
+    website: "https://www.xploudsport.com.br",
+    platform: "Olist",
+    agencySlug: "auaha",
+    image: "/projects/sites/xploud-sport.png",
+    imageAlt: "Preview do site Xploud Sport",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Xploud Sport, entregue em parceria com a Auaha.",
+  },
+  {
     slug: "indauto",
     name: "Indauto",
     website: "https://indauto.com.br",
@@ -462,6 +475,19 @@ export const projects: Project[] = [
     featuredOnHome: false,
     summary:
       "Loja publicada em Olist para a Los Borbas, entregue em parceria com a Mahara.",
+  },
+  {
+    slug: "doctors-first",
+    name: "Doctor's First",
+    website: "https://www.doctorsfirst.com.br",
+    platform: "NuvemShop",
+    agencySlug: "TEC4U",
+    image: "/projects/sites/doctors-first.png",
+    imageAlt: "Preview do site Doctor's First",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em NuvemShop para a Doctor's First, entregue em parceria com a TEC4U.",
   },
   {
     slug: "cafe-com-deus-pai",
