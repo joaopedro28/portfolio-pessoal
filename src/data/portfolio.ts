@@ -28,7 +28,7 @@ export type Project = {
   name: string;
   website: string;
   platform: string;
-  agencySlug: string;
+  agencySlug?: string;
   agencyCreditText?: string;
   image: string;
   imageAlt: string;
@@ -293,6 +293,18 @@ export const projects: Project[] = [
     featuredOnHome: false,
     summary:
       "Loja publicada em NuvemShop para a Rede Rosário, entregue em parceria com a Auaha.",
+  },
+  {
+    slug: "iron-bag",
+    name: "Iron Bag",
+    website: "https://www.ironbag.com.br",
+    platform: "NuvemShop",
+    image: "/projects/sites/iron-bag.png",
+    imageAlt: "Preview do site Iron Bag",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em NuvemShop para a Iron Bag, desenvolvida sem vínculo com agência parceira.",
   },
   {
     slug: "indauto",
@@ -585,7 +597,11 @@ export const contactData = {
     "O caminho mais rápido é pelo WhatsApp. Se preferir, também pode me chamar por e-mail.",
 };
 
-export function getAgencyBySlug(slug: string) {
+export function getAgencyBySlug(slug?: string) {
+  if (!slug) {
+    return undefined;
+  }
+
   return agencies.find((agency) => agency.slug === slug);
 }
 
@@ -640,13 +656,16 @@ export function getProjectsByPlatformSlug(slug: string) {
 }
 
 export function getRelatedProjects(project: Project, limit = 3) {
-  const sameAgency = projects.filter(
-    (item) => item.slug !== project.slug && item.agencySlug === project.agencySlug,
-  );
+  const sameAgency = project.agencySlug
+    ? projects.filter(
+        (item) =>
+          item.slug !== project.slug && item.agencySlug === project.agencySlug,
+      )
+    : [];
   const samePlatform = projects.filter(
     (item) =>
       item.slug !== project.slug &&
-      item.agencySlug !== project.agencySlug &&
+      (!project.agencySlug || item.agencySlug !== project.agencySlug) &&
       item.platform === project.platform,
   );
 

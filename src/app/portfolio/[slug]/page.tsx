@@ -171,7 +171,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <div className={styles.detailFactItem}>
                     <dt className={styles.detailFactTerm}>Agência</dt>
                     <dd className={styles.detailFactValue}>
-                      {agency ? agency.name : "Não informada"}
+                      {agency ? agency.name : "Sem agência parceira"}
                     </dd>
                   </div>
                 </dl>
@@ -181,7 +181,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <h2 className={styles.detailPanelTitle}>Ações</h2>
                 <p className={styles.detailSummary}>
                   A ficha leva para o site publicado e também permite continuar
-                  a navegação pela mesma plataforma ou pela agência parceira.
+                  {agency
+                    ? " a navegação pela mesma plataforma ou pela agência parceira."
+                    : " a navegação por outros projetos da mesma plataforma."}
                 </p>
                 <div className={styles.detailActions}>
                   <a
