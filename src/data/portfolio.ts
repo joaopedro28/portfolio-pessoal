@@ -204,7 +204,7 @@ export const agencies: Agency[] = [
     logoAlt: "Logo da Auaha",
     summary:
       "Agência com foco em marketing digital e e-commerce, atuando na construção e evolução de operações digitais.",
-    platforms: ["Olist", "Wake"],
+    platforms: ["Olist", "Wake", "NuvemShop"],
   },
   {
     slug: "TEC4U",
@@ -280,6 +280,19 @@ export const projects: Project[] = [
     featuredOnHome: false,
     summary:
       "Loja publicada em Olist para a Xploud Sport, entregue em parceria com a Auaha.",
+  },
+  {
+    slug: "rede-rosario",
+    name: "Rede Rosário",
+    website: "https://www.rederosario.com.br",
+    platform: "NuvemShop",
+    agencySlug: "auaha",
+    image: "/projects/sites/rede-rosario.png",
+    imageAlt: "Preview do site Rede Rosário",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em NuvemShop para a Rede Rosário, entregue em parceria com a Auaha.",
   },
   {
     slug: "indauto",
