@@ -1903,7 +1903,7 @@
   margin-top: 1.2rem;
   color: #f3f4f5;
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(4.4rem, 8.4vw, 9.6rem);
+  font-size: clamp(3.4rem, 5.8vw, 6.2rem);
   font-weight: 800;
   line-height: 0.72;
   letter-spacing: -0.055em;
@@ -2138,7 +2138,7 @@
 .profileHeading h2,
 .agenciesHeader h2 {
   color: inherit;
-  font-size: clamp(3.7rem, 7vw, 7.6rem);
+  font-size: clamp(2.9rem, 4.5vw, 4.8rem);
   font-weight: 800;
   line-height: 0.75;
   letter-spacing: -0.045em;
@@ -2228,7 +2228,7 @@
 .portfolioCtaTitle {
   margin-top: 1.5rem;
   color: #f4f4f1;
-  font-size: clamp(4.3rem, 8vw, 8.5rem);
+  font-size: clamp(3.2rem, 5vw, 5.4rem);
   font-weight: 800;
   line-height: 0.75;
   letter-spacing: -0.045em;
@@ -2488,7 +2488,7 @@
 
 .contactTitle {
   color: #f5f5f2;
-  font-size: clamp(5rem, 10vw, 11rem);
+  font-size: clamp(3.7rem, 6vw, 6.5rem);
   font-weight: 800;
   line-height: 0.69;
   letter-spacing: -0.05em;
@@ -2682,7 +2682,7 @@
 
   .heroTitle {
     margin-top: 1.4rem;
-    font-size: clamp(3.7rem, 20vw, 6rem);
+    font-size: clamp(2.95rem, 13.5vw, 4rem);
     line-height: 0.74;
   }
 
@@ -2771,7 +2771,7 @@
 
   .profileHeading h2,
   .agenciesHeader h2 {
-    font-size: clamp(3.4rem, 18vw, 5.2rem);
+    font-size: clamp(2.55rem, 11.5vw, 3.5rem);
     line-height: 0.77;
   }
 
@@ -2808,7 +2808,7 @@
   }
 
   .portfolioCtaTitle {
-    font-size: clamp(3.8rem, 19vw, 5.5rem);
+    font-size: clamp(2.75rem, 12.5vw, 3.8rem);
   }
 
   .showcaseGrid {
@@ -2882,7 +2882,7 @@
   }
 
   .contactTitle {
-    font-size: clamp(4.2rem, 22vw, 6.3rem);
+    font-size: clamp(3rem, 14vw, 4.25rem);
     line-height: 0.72;
   }
 
@@ -2902,5 +2902,639 @@
   .heroViewfinder,
   .availabilityDot {
     animation: none !important;
+  }
+}
+
+/* Internal pages — the same editorial system used on the home. */
+.portfolioHero {
+  padding: 1.5rem 0 1rem;
+  background: #08090a;
+}
+
+.portfolioHeroInner {
+  position: relative;
+  display: grid;
+  min-height: 31rem;
+  max-width: none;
+  align-content: end;
+  justify-content: stretch;
+  gap: 1.25rem;
+  padding: 1.25rem clamp(1.25rem, 4vw, 4rem) clamp(2rem, 5vw, 4.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(135deg, transparent 0 76%, rgba(74, 135, 176, 0.12) 76.1%, transparent 92%),
+    #050607;
+}
+
+.portfolioHeroInner::before {
+  content: "02 / Arquivo";
+  position: absolute;
+  top: 1.25rem;
+  right: clamp(1.25rem, 4vw, 4rem);
+  left: clamp(1.25rem, 4vw, 4rem);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.48);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.portfolioEyebrow {
+  color: #92c4e9;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.portfolioHeroTitle {
+  max-width: 26ch;
+  color: #f4f4f1;
+  font-size: clamp(2.6rem, 3.8vw, 4rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.portfolioHeroDescription {
+  max-width: 42rem;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  text-align: left;
+}
+
+.projectsSection {
+  padding: 5.5rem 0 7rem;
+  background: #dbe4e8;
+  color: #0c1114;
+}
+
+.projectsSectionHeader {
+  align-items: end;
+  margin-bottom: 2.5rem;
+  padding: 0 0 1.5rem;
+  border-bottom: 1px solid rgba(12, 17, 20, 0.26);
+}
+
+.projectsSection .sectionHeading {
+  max-width: 42rem;
+}
+
+.projectsSection .sectionEyebrow,
+.projectsSection .projectsFilterLabel {
+  color: #315a74;
+}
+
+.projectsSection .sectionTitle {
+  color: #0c1114;
+  font-size: clamp(2rem, 3.2vw, 3.2rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.projectsSection .sectionDescription {
+  color: rgba(12, 17, 20, 0.58);
+}
+
+.projectsSectionToolbar {
+  width: min(18rem, 100%);
+}
+
+.projectsFilterField {
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.projectsFilterControl::after {
+  border-color: #0c1114;
+}
+
+.projectsFilterSelect {
+  min-height: 3rem;
+  border: 1px solid rgba(12, 17, 20, 0.3);
+  border-radius: 0;
+  background: transparent;
+  color: #0c1114;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.projectsFilterSelect:hover,
+.projectsFilterSelect:focus-visible {
+  border-color: #0c1114;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+}
+
+.projectsGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid rgba(12, 17, 20, 0.18);
+  background: rgba(12, 17, 20, 0.18);
+}
+
+.projectsSection .projectCard {
+  border: 0;
+  border-radius: 0;
+  background: #e7ecee;
+  box-shadow: none;
+}
+
+.projectsSection .projectCard:hover,
+.projectsSection .projectCard:focus-within {
+  border-color: transparent;
+  background: #f0f2f1;
+  box-shadow: none;
+  transform: none;
+}
+
+.projectMedia {
+  aspect-ratio: 16 / 10;
+  border-bottom: 1px solid rgba(12, 17, 20, 0.18);
+}
+
+.projectsSection .projectImage {
+  filter: saturate(0.7) brightness(0.83);
+}
+
+.projectsSection .projectCard:hover .projectImage,
+.projectsSection .projectCard:focus-within .projectImage {
+  filter: saturate(1) brightness(0.96);
+  transform: scale(1.035);
+}
+
+.projectsSection .projectOverlay {
+  background: linear-gradient(180deg, transparent 55%, rgba(4, 6, 7, 0.66));
+}
+
+.projectBadge,
+.projectKind,
+.tag,
+.detailPill {
+  border-radius: 0;
+}
+
+.projectsSection .projectBadge {
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: rgba(5, 7, 8, 0.74);
+  color: #fff;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.projectBody {
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.projectsSection .projectTitle {
+  color: #0c1114;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.projectsSection .projectPartner {
+  color: #315a74;
+}
+
+.projectsSection .projectKind {
+  border-color: rgba(12, 17, 20, 0.18);
+  background: transparent;
+  color: rgba(12, 17, 20, 0.62);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.projectsSection .projectDescription {
+  color: rgba(12, 17, 20, 0.64);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.projectsSection .projectMetaLabel {
+  color: rgba(12, 17, 20, 0.5);
+}
+
+.projectsSection .projectMetaDivider {
+  background: rgba(12, 17, 20, 0.35);
+}
+
+.textButton,
+.textButtonMuted {
+  min-height: 2.55rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 0;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.projectsSection .textButton {
+  border-color: #0c1114;
+  background: #0c1114;
+  color: #fff;
+}
+
+.projectsSection .textButtonMuted {
+  border-color: rgba(12, 17, 20, 0.28);
+  background: transparent;
+  color: #0c1114;
+}
+
+.detailPage {
+  padding: 1.5rem 0 6rem;
+  background: #08090a;
+}
+
+.detailShell {
+  width: var(--container);
+}
+
+.detailBreadcrumb {
+  margin-bottom: 0.9rem;
+}
+
+.backLink {
+  padding: 0.8rem 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.detailHero {
+  gap: 1rem;
+  padding: clamp(1.5rem, 4vw, 4rem);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(135deg, transparent 0 80%, rgba(74, 135, 176, 0.1) 80.1%, transparent 94%),
+    #050607;
+}
+
+.detailEyebrow,
+.detailAgencyHeaderLabel,
+.detailAgencyNoticeLabel {
+  color: #92c4e9;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+}
+
+.detailTitle {
+  max-width: 20ch;
+  color: #f4f4f1;
+  font-size: clamp(3rem, 5.2vw, 5.5rem);
+  font-weight: 750;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.detailLead {
+  max-width: 48rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(0.96rem, 1.3vw, 1.14rem);
+  line-height: 1.6;
+}
+
+.detailSummary {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+.detailAgencyHeader {
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  padding: 0 0 1.25rem;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.detailAgencyLogoLink {
+  min-width: 8rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0;
+  background: #e7ecee;
+}
+
+.detailAgencyLogo {
+  max-width: 7rem;
+  max-height: 2rem;
+  filter: grayscale(1) brightness(0.25);
+}
+
+.detailAgencyHeaderName {
+  color: #fff;
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+.detailAgencyNotice {
+  max-width: 48rem;
+  margin-top: 0.75rem;
+  padding: 1rem 0 0 1rem;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0;
+  background: transparent;
+}
+
+.detailAgencyNoticeText {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.84rem;
+}
+
+.detailMedia {
+  aspect-ratio: 16 / 9;
+  margin-top: 2.5rem;
+  border-color: rgba(255, 255, 255, 0.18);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.detailImage {
+  filter: saturate(0.88) brightness(0.9);
+}
+
+.detailGrid,
+.agencyHeroPanel {
+  gap: 1px;
+  margin-top: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.detailPanel {
+  align-items: flex-start;
+  min-width: 0;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  border: 0;
+  border-radius: 0;
+  background: #0b0d0e;
+}
+
+.detailGrid > .detailPanel:first-child,
+.agencyHeroPanel > .detailPanel:first-child {
+  background: #dbe4e8;
+  color: #0c1114;
+}
+
+.detailPanelTitle {
+  color: #f4f4f1;
+  font-size: 1.5rem;
+  font-weight: 650;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.detailGrid > .detailPanel:first-child .detailPanelTitle,
+.detailGrid > .detailPanel:first-child .detailFactValue,
+.agencyHeroPanel > .detailPanel:first-child .detailPanelTitle {
+  color: #0c1114;
+}
+
+.detailGrid > .detailPanel:first-child .detailFactTerm {
+  color: rgba(12, 17, 20, 0.52);
+}
+
+.detailFactList {
+  width: 100%;
+}
+
+.detailFactItem {
+  max-width: 14rem;
+}
+
+.detailFactTerm {
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.58rem;
+}
+
+.detailFactValue {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.86rem;
+}
+
+.agencyHeroPanel {
+  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr);
+  margin-top: 2rem;
+}
+
+.agencyDetailLogo {
+  align-self: center;
+  max-width: 15rem;
+  filter: grayscale(1) brightness(0.25);
+}
+
+.detailActions {
+  width: 100%;
+}
+
+.detailActions .buttonPrimary,
+.detailActions .buttonSecondary,
+.detailActions .buttonGhost {
+  width: auto;
+}
+
+.detailRelatedSection {
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+.detailSectionHeading {
+  max-width: 46rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.detailSectionTitle {
+  color: #f4f4f1;
+  font-size: clamp(2rem, 3.2vw, 3.2rem);
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.detailRelatedSection .projectsGrid {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.detailRelatedSection .projectCard {
+  border: 0;
+  border-radius: 0;
+  background: #0b0d0e;
+  box-shadow: none;
+}
+
+.detailRelatedSection .projectCard:hover,
+.detailRelatedSection .projectCard:focus-within {
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.detailRelatedSection .projectTitle {
+  font-size: 1.5rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.detailRelatedSection .projectDescription {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1100px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .detailGrid,
+  .agencyHeroPanel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .portfolioHero {
+    padding: 0.75rem 0 0.5rem;
+  }
+
+  .portfolioHeroInner {
+    min-height: 0;
+    padding: 4.6rem 1.25rem 2rem;
+  }
+
+  .portfolioHeroInner::before {
+    top: 1rem;
+    right: 1.25rem;
+    left: 1.25rem;
+  }
+
+  .portfolioHeroTitle {
+    font-size: clamp(2.25rem, 10.5vw, 2.75rem);
+    line-height: 0.92;
+  }
+
+  .projectsSection {
+    padding: 4rem 0 5rem;
+  }
+
+  .projectsSectionHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectsSection .sectionTitle,
+  .detailSectionTitle {
+    font-size: 2.25rem;
+  }
+
+  .projectTop {
+    flex-direction: row;
+  }
+
+  .projectActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .projectActions .textButton,
+  .projectActions .textButtonMuted {
+    width: 100%;
+  }
+
+  .detailPage {
+    padding: 0.75rem 0 4rem;
+  }
+
+  .detailHero {
+    padding: 1.25rem;
+  }
+
+  .detailTitle {
+    font-size: clamp(2.55rem, 13vw, 3.55rem);
+    line-height: 0.86;
+  }
+
+  .detailAgencyHeader {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0.8rem;
+  }
+
+  .detailAgencyLogoLink {
+    min-width: 0;
+  }
+
+  .detailMedia {
+    aspect-ratio: 4 / 3;
+    margin-top: 1.5rem;
+  }
+
+  .detailGrid,
+  .agencyHeroPanel {
+    border-inline: 0;
+  }
+
+  .detailPanel {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .detailFactList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 1rem;
+  }
+
+  .detailFactItem,
+  .detailFactItem:first-child {
+    max-width: none;
+    padding-top: 0.75rem;
+    border-top: 1px solid currentColor;
+    border-color: rgba(127, 141, 148, 0.28);
+  }
+
+  .detailActions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .detailActions .buttonPrimary,
+  .detailActions .buttonSecondary,
+  .detailActions .buttonGhost {
+    width: 100%;
+  }
+
+  .detailRelatedSection {
+    margin-top: 4rem;
   }
 }
