@@ -1,45 +1,66 @@
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatedReveal } from "@/components/animated-reveal";
+import { projects } from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
 
-const highlights = [
-  "Cases organizados por contexto, stack e entrega.",
-  "Leitura mais limpa, sem comprimir a home.",
-  "Navegação direta para quem quer ver trabalho real.",
+const showcaseSlugs = [
+  "iron-bag",
+  "loja-kings",
+  "buccanes",
+  "cafe-com-deus-pai",
+  "4music",
 ];
 
 export function PortfolioCtaSection() {
+  const showcaseProjects = showcaseSlugs
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter((project) => project !== undefined);
+
   return (
-    <section className={`${styles.section} ${styles.portfolioCtaSection}`}>
+    <section id="projetos" className={`${styles.section} ${styles.portfolioCtaSection}`}>
       <div className={styles.container}>
-        <AnimatedReveal className={styles.portfolioCtaPanel}>
-          <div className={styles.portfolioCtaCopy}>
-            <span className={styles.sectionEyebrow}>Portfólio completo</span>
-            <h2 className={styles.portfolioCtaTitle}>
-              A home mostra uma curadoria. A listagem completa organiza todas as
-              entregas por agência, plataforma e site publicado.
-            </h2>
-            <p className={styles.portfolioCtaDescription}>
-              Se você quer revisar o repertório inteiro, abrir cada ficha e
-              navegar entre lojas e landing pages em detalhe, a página de
-              portfólio concentra tudo em uma leitura mais direta.
-            </p>
+        <AnimatedReveal className={styles.portfolioCtaHeader}>
+          <div>
+            <span className={styles.sectionEyebrow}>03 / Projetos selecionados</span>
+            <h2 className={styles.portfolioCtaTitle}>Trabalho real.<br />Em produção.</h2>
           </div>
-
           <div className={styles.portfolioCtaAside}>
-            {/* <ul className={styles.portfolioHighlightList}>
-              {highlights.map((item) => (
-                <li key={item} className={styles.portfolioHighlightItem}>
-                  {item}
-                </li>
-              ))}
-            </ul> */}
-
-            <Link href="/portfolio" className={styles.buttonPrimary}>
-              Ver todos os projetos
+            <p className={styles.portfolioCtaDescription}>
+              Uma seleção de lojas e campanhas construídas para diferentes
+              mercados, plataformas e momentos de negócio.
+            </p>
+            <Link href="/portfolio" className={styles.portfolioTextLink}>
+              Ver arquivo completo <span aria-hidden="true">↗</span>
             </Link>
           </div>
         </AnimatedReveal>
+
+        <div className={styles.showcaseGrid}>
+          {showcaseProjects.map((project, index) => (
+            <AnimatedReveal
+              key={project.slug}
+              className={styles.showcaseReveal}
+              delay={index * 80}
+            >
+              <Link href={`/portfolio/${project.slug}`} className={styles.showcaseItem}>
+                <Image
+                  src={project.image}
+                  alt={project.imageAlt}
+                  fill
+                  sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                  className={styles.showcaseImage}
+                />
+                <span className={styles.showcaseOverlay} />
+                <span className={styles.showcaseMeta}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{project.name}</strong>
+                  <span>{project.platform}</span>
+                </span>
+              </Link>
+            </AnimatedReveal>
+          ))}
+        </div>
       </div>
     </section>
   );
