@@ -502,6 +502,19 @@ export const projects: Project[] = [
       "Loja publicada em Olist para a Los Borbas, entregue em parceria com a Mahara.",
   },
   {
+    slug: "buccanes",
+    name: "Buccanes",
+    website: "https://www.buccanes.com.br",
+    platform: "Olist",
+    agencySlug: "mahara",
+    image: "/projects/sites/buccanes.png",
+    imageAlt: "Preview do site Buccanes",
+    kind: "store",
+    featuredOnHome: false,
+    summary:
+      "Loja publicada em Olist para a Buccanes, entregue em parceria com a Mahara.",
+  },
+  {
     slug: "doctors-first",
     name: "Doctor's First",
     website: "https://www.doctorsfirst.com.br",
