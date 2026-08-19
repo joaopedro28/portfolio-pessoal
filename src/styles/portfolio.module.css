@@ -2430,6 +2430,7 @@
 
 .partnerLink:hover .partnerLogo,
 .partnerLink:focus-visible .partnerLogo {
+  filter: none;
   transform: none;
 }
 
@@ -3348,7 +3349,7 @@
 .agencyDetailLogo {
   align-self: center;
   max-width: 15rem;
-  filter: grayscale(1) brightness(0.25);
+  filter: none;
 }
 
 .detailActions {
