@@ -5,11 +5,11 @@ import { projects } from "@/data/portfolio";
 import styles from "@/styles/portfolio.module.css";
 
 const showcaseSlugs = [
-  "let-me-be-sem-pausa",
+  "iron-bag",
+  "loja-kings",
   "buccanes",
   "cafe-com-deus-pai",
-  "coisas-da-lu-sigaud",
-  "nous-joalheria",
+  "4music",
 ];
 
 export function PortfolioCtaSection() {

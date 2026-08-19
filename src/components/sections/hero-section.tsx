@@ -43,10 +43,10 @@ export function HeroSection() {
           </AnimatedReveal>
 
           <AnimatedReveal className={styles.heroVisualWrap} delay={210}>
-            <Link href="/portfolio/nous-joalheria" className={styles.heroMainProject}>
+            <Link href="/portfolio/loja-kings" className={styles.heroMainProject}>
               <Image
-                src="/projects/sites/nous-joalheria.png"
-                alt="Projeto Nous Joalheria"
+                src="/projects/sites/loja-kings.png"
+                alt="Projeto Loja Kings"
                 fill
                 priority
                 sizes="(max-width: 900px) 100vw, 55vw"
@@ -54,22 +54,22 @@ export function HeroSection() {
               />
               <span className={styles.heroProjectShade} />
               <span className={styles.heroProjectMeta}>
-                <span>Nous Joalheria</span>
-                <span>Olist / 2026</span>
+                <span>Loja Kings</span>
+                <span>NuvemShop / 2026</span>
               </span>
             </Link>
 
-            <Link href="/portfolio/buccanes" className={styles.heroSideProject}>
+            <Link href="/portfolio/cafe-com-deus-pai" className={styles.heroSideProject}>
               <Image
-                src="/projects/sites/buccanes.png"
-                alt="Projeto Buccanes"
+                src="/projects/sites/cafe-com-deus-pai.png"
+                alt="Projeto Café com Deus Pai"
                 fill
                 priority
                 sizes="(max-width: 900px) 42vw, 18vw"
                 className={styles.heroProjectImage}
               />
               <span className={styles.heroProjectShade} />
-              <span className={styles.heroSideProjectLabel}>Buccanes / Olist</span>
+              <span className={styles.heroSideProjectLabel}>Café com Deus Pai / NuvemShop</span>
             </Link>
             <span className={styles.heroViewfinder} aria-hidden="true" />
           </AnimatedReveal>
