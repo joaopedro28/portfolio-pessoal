@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Jost, Outfit } from "next/font/google";
+import { Barlow_Condensed, DM_Sans, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/data/portfolio";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const dmSans = DM_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const jost = Jost({
-  variable: "--font-jost",
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -89,7 +90,7 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${outfit.variable} ${jost.variable} ${geistMono.variable}`}
+      className={`${dmSans.variable} ${barlowCondensed.variable} ${geistMono.variable}`}
     >
       <body suppressHydrationWarning>{children}</body>
     </html>

@@ -57,8 +57,8 @@ export default function Home() {
         <footer className={styles.footer}>
           <div className={styles.container}>
             <div className={styles.footerInner}>
-              <p className={styles.footerBrand}>João Pedro</p>
-              <p>Portfólio em Next.js, CSS Modules e foco em performance.</p>
+              <p className={styles.footerBrand}>JP — 2026</p>
+              <p>Front-end para e-commerce / Brasil</p>
             </div>
           </div>
         </footer>

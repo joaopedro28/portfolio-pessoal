@@ -15,47 +15,35 @@ function WhatsAppIcon() {
 
 export function SiteHeader() {
   return (
-    <>
-      <header className={styles.siteHeader}>
-        <div className={`${styles.container} ${styles.siteHeaderInner}`}>
-          <Link href="/" className={styles.wordmark}>
-            <span className={styles.wordmarkName}>{siteConfig.name}</span>
-            <span className={styles.wordmarkRole}>Front-end para e-commerce</span>
-          </Link>
+    <header className={styles.siteHeader}>
+      <div className={`${styles.container} ${styles.siteHeaderInner}`}>
+        <Link href="/" className={styles.wordmark} aria-label="João Pedro — início">
+          <span className={styles.wordmarkName}>JP</span>
+          <span className={styles.wordmarkRole}>Front-end / e-commerce</span>
+        </Link>
 
-          <nav aria-label="Navegação principal" className={styles.siteNav}>
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className={styles.siteNavLink}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+        <nav aria-label="Navegação principal" className={styles.siteNav}>
+          {navItems.map((item, index) => (
+            <Link key={item.href} href={item.href} className={styles.siteNavLink}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-          <a
-            href={siteConfig.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.siteHeaderAction}
-          >
-            <span className={styles.siteHeaderActionIcon} aria-hidden="true">
-              <WhatsAppIcon />
-            </span>
-            WhatsApp
-          </a>
-        </div>
-      </header>
-
-      <a
-        href={siteConfig.whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Abrir conversa no WhatsApp"
-        className={styles.mobileWhatsAppButton}
-      >
-        <span className={styles.siteHeaderActionIcon} aria-hidden="true">
-          <WhatsAppIcon />
-        </span>
-      </a>
-    </>
+        <a
+          href={siteConfig.whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.siteHeaderAction}
+        >
+          <span className={styles.availabilityDot} aria-hidden="true" />
+          <span className={styles.siteHeaderActionText}>Disponível</span>
+          <span className={styles.siteHeaderActionIcon} aria-hidden="true">
+            <WhatsAppIcon />
+          </span>
+        </a>
+      </div>
+    </header>
   );
 }
